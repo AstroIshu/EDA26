@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loading animation with 3D clouds">
+    <title>Loading...</title>
+    
+    <!-- Loader CSS -->
+    <link rel="stylesheet" href="../css/loader.css">
+    
+    <!-- ES Module Shims for Three.js -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    
+    <!-- Import Map for Three.js -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.167.0/build/three.module.js",
+            "addons/": "https://cdn.jsdelivr.net/npm/three@0.167.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Loader Container -->
+    <div class="container" id="container"></div>
+    
+    
+    <!-- Loader JavaScript -->
+    <script type="module" src="../js/loader.js"></script>
+</body>
+</html>
