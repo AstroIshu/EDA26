@@ -241,7 +241,7 @@ export function onLoaderComplete(callback) {
                     callback();
                 }
                 // Optionally redirect to main page
-                // window.location.href = '../pages/main.html';
+                // window.location.href = '../3d/3dmain.html';
             }, 1000);
         }
     }, 3000); // Show loader for at least 3 seconds
@@ -344,7 +344,7 @@ function handleEnterClick(event) {
     // Redirect after fade out
     setTimeout(() => {
         // Change this to your main page
-        window.location.href = '../pages/main.html';
+        window.location.href = '../3d/3dmain.html';
     }, 1000);
 }
 // Export the main functions for external use

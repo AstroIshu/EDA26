@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* Section */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 10px 50px;
+    transition: padding-top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.section.padded {
+    padding-top: 140px;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: #aaa;
+    font-family: monospace;
+    z-index: 100;
+}
+
+/* Main Content Centering */
+.content {
+    max-width: 1200px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #84b067;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 4px 20px rgba(132, 176, 103, 0.2);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content h1 {
+    color: #84b067;
+    font-family: "Special Elite", monospace;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    text-align: center;
+    margin: 0 0 40px 0;
+    font-weight: bold;
+}
+
+/* Text Block with Special Effect */
+.text-block {
+    margin: 40px auto;
+    max-width: 800px;
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(16px, 4vw, 24px);
+    text-align: center;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.char {
+    will-change: transform;
+}
+
+/* Timeline Section */
+.timeline-section {
+    margin-top: 60px;
+    width: 100%;
+}
+
+.timeline-section h2 {
+    color: #84b067;
+    font-family: "Special Elite", monospace;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding: 20px 0;
+}
+
+.section-title {
+    position: sticky;
+    top: 100px;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: bold;
+    color: #84b067;
+    font-family: "Special Elite", monospace;
+    min-width: 180px;
+    max-width: 200px;
+    flex-shrink: 0;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.time-subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: #aaa;
+    margin: 5px 0 25px 0;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(224, 224, 224, 0.3);
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.time-subtitle:hover {
+    color: #84b067;
+    border-bottom-color: #84b067;
+}
+
+.section-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+article {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+aside {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+main {
+    padding-bottom: 1rem;
+    flex: 1;
+}
+
+main h3 {
+    color: #84b067;
+    font-family: "Special Elite", monospace;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+main p {
+    color: #e0e0e0;
+    font-family: monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.dot {
+    --size: 0.5rem;
+    width: var(--size);
+    height: var(--size);
+    margin: calc((1rem - var(--size))/2);
+    border-radius: 50%;
+    background-color: #84b067;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.line {
+    flex-grow: 1;
+    margin: 8px 0;
+    width: 3px;
+    background-color: #84b067;
+    min-height: 60px;
+}
+
+.line.last {
+    background: linear-gradient(to bottom, #84b067, transparent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        padding: 30px 20px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+    
+    .content h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .section-title {
+        position: static;
+        min-width: auto;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .time-subtitle {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    article {
+        max-width: none;
+    }
+    
+    .text-block {
+        margin: 20px auto;
+        font-size: clamp(14px, 4vw, 18px);
+    }
+    
+    .timeline-section h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 25px 15px;
+        margin: 5px;
+        border-radius: 15px;
+    }
+    
+    .content h1 {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+        margin-bottom: 25px;
+    }
+    
+    .timeline-item {
+        margin-bottom: 40px;
+        padding: 15px 0;
+    }
+    
+    article {
+        gap: 20px;
+    }
+    
+    main h3 {
+        font-size: 1.1rem;
+    }
+    
+    main p {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: clamp(18px, 5vw, 24px);
+    }
+    
+    .time-subtitle {
+        font-size: 0.75rem;
+    }
+    
+    .timeline-section {
+        margin-top: 40px;
+    }
+    
+    .timeline-section h2 {
+        font-size: 1.8rem;
+    }
+}
+/* Dynamic Island Navigation */
+.dynamic-island {
+    position: fixed;
+    top: 20px;
+    left: 51%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px dashed #84b067;
+    border-radius: 38px;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    max-width: 900px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    opacity: 1;
+    scale: 1;
+    transition: width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                padding 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                max-width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                opacity 0.4s ease,
+                scale 0.4s ease;
+}
+
+.dynamic-island.shrunk {
+    width: 40%;
+    max-width: 600px;
+    padding: 10px 20px;
+    top: 8px;
+    opacity: 0.95;
+    scale: 0.98;
+}
+
+.dynamic-island.shrunk .logo {
+    font-size: 25px;
+}
+
+.dynamic-island.shrunk .menu-items a {
+    font-size: 16px;
+}
+
+.logo {
+    color: #84b067;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 3px;
+    font-family: "Special Elite", monospace;
+    z-index: 2;
+    transition: font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-items {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-items a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Special Elite", monospace;
+    transition: color 0.3s ease, font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-items a:hover {
+    color: #84b067;
+}
+
+/* Starfield Background */
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 2px solid #84b067;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(132, 176, 103, 0.3);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #84b067 transparent;
+}
+
+/* Dynamic Island Responsive Design */
+@media (max-width: 768px) {
+    .dynamic-island {
+        width: 80%;
+        padding: 8px 20px;
+    }
+    
+    .dynamic-island.shrunk {
+        width: 70%;
+        padding: 6px 15px;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    .dynamic-island.shrunk .logo {
+        font-size: 22px;
+    }
+    
+    .menu-items {
+        gap: 15px;
+    }
+    
+    .menu-items a {
+        font-size: 14px;
+    }
+    
+    .dynamic-island.shrunk .menu-items a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dynamic-island {
+        width: 90%;
+    }
+    
+    .menu-items {
+        gap: 10px;
+    }
+    
+    .menu-items a {
+        font-size: 12px;
+    }
+}
