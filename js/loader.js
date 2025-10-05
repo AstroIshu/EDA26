@@ -166,7 +166,10 @@ function init(t) {
     // Start animation
     animate();
     
-    console.log("🌥️ Cloud loader initialized successfully!");
+    console.log("🌥️ Cloud animation initialized!");
+    
+    // Start the sequence: clouds fade in after a delay
+    startSequence();
 }
 
 // Create fallback texture if main texture fails to load
@@ -193,7 +196,7 @@ function createFallbackTexture() {
 // Mouse movement handler
 function onDocumentMouseMove(event) {
     mouseX = (event.clientX - windowHalfX) * 0.25;
-    mouseY = (event.clientY - windowHalfY) * 0.15;
+    mouseY = (event.clientY - windowHalfY) * 0.25;
 }
 
 // Window resize handler
@@ -238,26 +241,120 @@ export function onLoaderComplete(callback) {
                     callback();
                 }
                 // Optionally redirect to main page
-                // window.location.href = '../index.html';
+                // window.location.href = '../pages/main.html';
             }, 1000);
         }
     }, 3000); // Show loader for at least 3 seconds
 }
 
 // Optional: Progress tracking
-export function updateLoadingProgress(progress) {
-    const progressBar = document.querySelector('.loading-progress');
-    if (progressBar) {
-        const percentage = Math.min(100, Math.max(0, progress));
-        progressBar.style.width = percentage + '%';
-    }
-}
+// export function updateLoadingProgress(progress) {
+//     const progressBar = document.querySelector('.loading-progress');
+//     if (progressBar) {
+//         const percentage = Math.min(100, Math.max(0, progress));
+//         progressBar.style.width = percentage + '%';
+//     }
+// }
 
 // Export the main functions for external use
 window.LoaderAPI = {
     onLoaderComplete,
-    updateLoadingProgress
+    onLoaderCompleteWithText,
+    updateLoadingProgress,
+    showRevealText,
+    proceedToMainSite
 };
 
-// Console message
-console.log('%c🌥️ Cloud Loader initialized!', 'color: #4584b4; font-size: 16px; font-weight: bold;');
+// ========================================
+// NEW SEQUENCE FUNCTIONS
+// ========================================
+
+// Start the main sequence
+function startSequence() {
+    console.log('🎬 Starting Escape Da Vinci 2k26 sequence...');
+    
+    // Step 1: Title is already visible (CSS animation)
+    console.log('📝 Title "Escape Da Vinci 2k26" displayed');
+    
+    // Step 2: Fade in clouds after 1 second
+    setTimeout(() => {
+        fadeInClouds();
+    }, 1000);
+    
+    // Step 3: Show Enter button after 5 seconds total
+    setTimeout(() => {
+        showEnterButton();
+    }, 5000);
+}
+
+// Fade in the cloud animation
+function fadeInClouds() {
+    const container = document.querySelector('.container');
+    const marqueeContainer = document.getElementById('marqueeContainer');
+    
+    if (container) {
+        container.classList.add('show');
+        console.log('🌥️ Clouds fading in behind text...');
+    }
+    
+    // Show marquee at the same time as clouds
+    if (marqueeContainer) {
+        marqueeContainer.classList.add('show');
+        console.log('🎠 Marquee text rolling in...');
+    }
+}
+
+// Show the Enter button with animation
+function showEnterButton() {
+    const enterButton = document.getElementById('enterButton');
+    if (enterButton) {
+        enterButton.classList.add('show');
+        console.log('✨ Sparkly Enter button appeared!');
+        
+        // Add click event listener
+        enterButton.addEventListener('click', handleEnterClick);
+    }
+}
+
+// Handle Enter button click
+function handleEnterClick(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    console.log('🚀 Sparkly Enter button clicked! Proceeding to main site...');
+    
+    // Add fade out animation
+    const mainContent = document.getElementById('mainContent');
+    const container = document.querySelector('.container');
+    const marqueeContainer = document.getElementById('marqueeContainer');
+    
+    if (mainContent) {
+        mainContent.style.transition = 'opacity 1s ease-out';
+        mainContent.style.opacity = '0';
+    }
+    
+    if (container) {
+        container.style.transition = 'opacity 1s ease-out';
+        container.style.opacity = '0';
+    }
+    
+    if (marqueeContainer) {
+        marqueeContainer.style.transition = 'opacity 1s ease-out';
+        marqueeContainer.style.opacity = '0';
+    }
+    
+    // Redirect after fade out
+    setTimeout(() => {
+        // Change this to your main page
+        window.location.href = '../pages/main.html';
+    }, 1000);
+}
+// Export the main functions for external use
+window.LoaderAPI = {
+    startSequence,
+    fadeInClouds,
+    showEnterButton,
+    handleEnterClick
+};
+
+// Console messages
+console.log('%c🎬 Escape Da Vinci 2k26 Loader initialized!', 'color: #4584b4; font-size: 16px; font-weight: bold;');
+console.log('%c🎆 Sequence: Title → Clouds → Enter Button', 'color: white; font-size: 14px;');

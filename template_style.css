@@ -1,0 +1,463 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* Dynamic Island Navigation */
+.dynamic-island {
+    position: fixed;
+    top: 20px;
+    left: 51%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px dashed #84b067;
+    border-radius: 38px;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    max-width: 900px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    opacity: 1;
+    scale: 1;
+    transition: width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                padding 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                max-width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                opacity 0.4s ease,
+                scale 0.4s ease;
+}
+
+.dynamic-island.shrunk {
+    width: 40%;
+    max-width: 600px;
+    padding: 10px 20px;
+    top: 8px;
+    opacity: 0.95;
+    scale: 0.98;
+}
+
+.dynamic-island.shrunk .logo {
+    font-size: 25px;
+}
+
+.dynamic-island.shrunk .menu-items a {
+    font-size: 16px;
+}
+
+.logo {
+    color: #84b067;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 3px;
+    font-family: "Special Elite", monospace;
+    z-index: 2;
+    transition: font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-items {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-items a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Special Elite", monospace;
+    transition: color 0.3s ease, font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-items a:hover {
+    color: #84b067;
+}
+
+/* Main Section */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 10px 50px;
+    background: url('bg.png') no-repeat center center;
+    background-size: cover;
+    transition: padding-top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.section.padded {
+    padding-top: 100px;
+}
+
+/* Content Container */
+.content {
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #84b067;
+    padding: 40px;
+    backdrop-filter: blur(5px);
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 4px 20px rgba(132, 176, 103, 0.2);
+}
+
+.content h1 {
+    color: #84b067;
+    font-size: 2.8rem;
+    font-family: "Special Elite", monospace;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    font-family: monospace;
+}
+
+/* Action Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(17, 17, 17, 0.8);
+    border: 1px solid #444;
+    border-radius: 50%;
+    color: #84b067;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.buttons a:hover {
+    background: #84b067;
+    color: black;
+    transform: scale(1.1);
+}
+
+.buttons i {
+    font-size: 24px;
+}
+
+/* Special Section (Optional) */
+.special-section {
+    margin: 40px 0;
+    padding: 30px 0;
+    border-top: 1px dashed #84b067;
+    border-bottom: 1px dashed #84b067;
+}
+
+.special-section h2 {
+    color: #84b067;
+    font-family: "Special Elite", monospace;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.special-content {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Content Grid */
+.content-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 40px;
+    align-items: stretch;
+}
+
+.left-section {
+    width: 48%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border: 1px dashed #84b067;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+}
+
+.right-section {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-item {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border: 1px dashed #84b067;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-section h2,
+.right-item h2 {
+    color: #84b067;
+    font-family: "Special Elite", monospace;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.left-section p,
+.right-item p {
+    font-family: monospace;
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    align-self: center;
+    bottom: 10px;
+    left: 90%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #aaa;
+    font-family: monospace;
+}
+
+/* Floating Element */
+#floating-svg {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    z-index: 999;
+    transform: translate(0, 0) rotate(0deg);
+}
+
+/* Custom Cursors */
+body {
+    cursor: url('/img/arr2-32.png'), default;
+}
+
+a[href],
+button,
+.clickable-element {
+    cursor: url('/img/arr1-32.png'), pointer;
+}
+
+/* Loader Styles */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #2b2b2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1.6s ease-out;
+}
+
+.letter-i {
+    width: 80vh;
+    height: 80vh;
+}
+
+.cls-1 {
+    fill: none;
+    stroke-miterlimit: 10;
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-dasharray: 1500;
+    animation: lines 2s infinite;
+    animation-delay: calc(var(--item) * 1s);
+}
+
+.dot {
+    stroke-dasharray: 500;
+    stroke: var(--color);
+}
+
+.stem {
+    stroke: var(--color);
+}
+
+@keyframes lines {
+    100% {
+        stroke-dashoffset: 3000;
+    }
+}
+
+#dynamic-island {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.container.loaded #dynamic-island {
+    opacity: 1;
+}
+
+/* Starfield Background */
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 2px solid #84b067;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(132, 176, 103, 0.3);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #84b067 transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dynamic-island {
+        width: 80%;
+        padding: 8px 20px;
+    }
+    
+    .dynamic-island.shrunk {
+        width: 70%;
+        padding: 6px 15px;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    .dynamic-island.shrunk .logo {
+        font-size: 22px;
+    }
+    
+    .menu-items {
+        gap: 15px;
+    }
+    
+    .menu-items a {
+        font-size: 14px;
+    }
+    
+    .dynamic-island.shrunk .menu-items a {
+        font-size: 12px;
+    }
+    
+    .content {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .content h1 {
+        font-size: 2rem;
+    }
+    
+    .content p {
+        font-size: 1rem;
+    }
+    
+    .buttons {
+        gap: 8px;
+    }
+    
+    .buttons a {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .buttons i {
+        font-size: 18px;
+    }
+    
+    .content-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .left-section,
+    .right-section {
+        width: 100%;
+    }
+    
+    .footer {
+        left: 50%;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dynamic-island {
+        width: 90%;
+    }
+    
+    .menu-items {
+        gap: 10px;
+    }
+    
+    .menu-items a {
+        font-size: 12px;
+    }
+    
+    .content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .special-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .left-section h2,
+    .right-item h2 {
+        font-size: 1.2rem;
+    }
+}
