@@ -325,13 +325,43 @@ window.onload = function () {
 //   repeat: -1,
 //   yoyo: true
 // });
-const split = new SplitText("#loading-text", { type: "chars" });
-gsap.to(split.chars, {
-  y: -10,
-  opacity: 0,
-  duration: 0.6,
-  yoyo: true,
-  repeat: -1,
-  stagger: 0.05,
-  ease: "sine.inOut"
-});
+// Custom SplitText function for loading text animation
+function customSplitText(selector) {
+    const element = document.querySelector(selector);
+    if (!element) return { chars: [] };
+    
+    const text = element.textContent;
+    const chars = [];
+    element.innerHTML = '';
+    
+    text.split('').forEach(char => {
+        if (char === ' ') {
+            const spaceSpan = document.createElement('span');
+            spaceSpan.innerHTML = '&nbsp;';
+            spaceSpan.style.display = 'inline-block';
+            element.appendChild(spaceSpan);
+            chars.push(spaceSpan);
+        } else {
+            const charSpan = document.createElement('span');
+            charSpan.textContent = char;
+            charSpan.style.display = 'inline-block';
+            element.appendChild(charSpan);
+            chars.push(charSpan);
+        }
+    });
+    
+    return { chars };
+}
+
+const split = customSplitText("#loading-text");
+if (split.chars.length > 0) {
+    gsap.to(split.chars, {
+        y: -10,
+        opacity: 0,
+        duration: 0.6,
+        yoyo: true,
+        repeat: -1,
+        stagger: 0.05,
+        ease: "sine.inOut"
+    });
+}

@@ -272,7 +272,9 @@ body {
 }
 
 .char {
-    will-change: transform;
+    display: inline-block;
+    will-change: transform, color, text-shadow;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 /* Timeline Section */

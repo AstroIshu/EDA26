@@ -1,18 +1,44 @@
 // Wait for GSAP plugins to load
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize SplitText for the paragraph in text-block
-    const st = SplitText.create(".text-block p", { type: "chars", charsClass: "char" });
-
-    // Set data-content attribute for each character
-    st.chars.forEach((char) => {
-        gsap.set(char, { attr: { "data-content": char.innerHTML } });
-    });
+    // Custom SplitText implementation
+    function customSplitText(selector) {
+        const elements = document.querySelectorAll(selector);
+        const result = { chars: [] };
+        
+        elements.forEach(element => {
+            const text = element.textContent;
+            element.innerHTML = '';
+            
+            text.split('').forEach(char => {
+                if (char === ' ') {
+                    const spaceSpan = document.createElement('span');
+                    spaceSpan.className = 'char';
+                    spaceSpan.innerHTML = '&nbsp;';
+                    spaceSpan.dataset.content = ' ';
+                    element.appendChild(spaceSpan);
+                    result.chars.push(spaceSpan);
+                } else {
+                    const charSpan = document.createElement('span');
+                    charSpan.className = 'char';
+                    charSpan.textContent = char;
+                    charSpan.dataset.content = char;
+                    element.appendChild(charSpan);
+                    result.chars.push(charSpan);
+                }
+            });
+        });
+        
+        return result;
+    }
+    
+    // Initialize custom SplitText for the paragraph in text-block
+    const st = customSplitText(".text-block p");
 
     // Get the text block container
     const textBlock = document.querySelector(".text-block");
 
-    // Add pointer move event listener for scramble effect
-    if (textBlock) {
+    // Add pointer move event listener for hover effect
+    if (textBlock && st.chars.length > 0) {
         textBlock.onpointermove = (e) => {
             st.chars.forEach((char) => {
                 const rect = char.getBoundingClientRect();
@@ -23,17 +49,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 
                 if (dist < 100) {
+                    // Simple glow/scale effect
                     gsap.to(char, {
                         overwrite: true,
-                        duration: 1.2 - dist / 100,
-                        scrambleText: {
-                            text: char.dataset.content,
-                            chars: ".:",
-                            speed: 0.5,
-                        },
-                        ease: 'none'
+                        duration: 0.3,
+                        scale: 1.1,
+                        color: "#ff4444",
+                        textShadow: "0 0 10px #ff4444",
+                        ease: 'power2.out'
+                    });
+                } else {
+                    // Reset to normal
+                    gsap.to(char, {
+                        overwrite: true,
+                        duration: 0.5,
+                        scale: 1,
+                        color: "#ffffff",
+                        textShadow: "none",
+                        ease: 'power2.out'
                     });
                 }
+            });
+        };
+        
+        // Reset all chars when mouse leaves
+        textBlock.onpointerleave = () => {
+            st.chars.forEach((char) => {
+                gsap.to(char, {
+                    duration: 0.5,
+                    scale: 1,
+                    color: "#ffffff",
+                    textShadow: "none",
+                    ease: 'power2.out'
+                });
             });
         };
     }
