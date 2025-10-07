@@ -3,6 +3,33 @@
 import * as THREE from "three";
 import * as BufferGeometryUtils from "addons/utils/BufferGeometryUtils.js";
 
+// Initialize background music
+function initAudio() {
+    const audio = document.getElementById('background-music');
+    if (audio) {
+        audio.volume = 0.5; // Set volume to 50%
+        
+        // Try to play audio automatically
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    console.log('🎵 Background music started successfully!');
+                })
+                .catch(error => {
+                    console.log('🎵 Auto-play blocked by browser. User interaction required.', error);
+                    // Add a click listener to start music on first user interaction
+                    document.addEventListener('click', () => {
+                        audio.play().then(() => {
+                            console.log('🎵 Background music started after user interaction!');
+                        }).catch(e => console.log('🎵 Could not start audio:', e));
+                    }, { once: true });
+                });
+        }
+    }
+}
+
 // Cloud shader for atmospheric effects
 const cloudShader = {
     vertexShader: `
@@ -273,6 +300,9 @@ window.LoaderAPI = {
 function startSequence() {
     console.log('🎬 Starting Escape Da Vinci 2k26 sequence...');
     
+    // Initialize background music
+    initAudio();
+    
     // Step 1: Title is already visible (CSS animation)
     console.log('📝 Title "Escape Da Vinci 2k26" displayed');
     
@@ -318,34 +348,9 @@ function showEnterButton() {
 
 // Handle Enter button click
 function handleEnterClick(event) {
-    event.preventDefault(); // Prevent default anchor behavior
-    console.log('🚀 Sparkly Enter button clicked! Proceeding to main site...');
-    
-    // Add fade out animation
-    const mainContent = document.getElementById('mainContent');
-    const container = document.querySelector('.container');
-    const marqueeContainer = document.getElementById('marqueeContainer');
-    
-    if (mainContent) {
-        mainContent.style.transition = 'opacity 1s ease-out';
-        mainContent.style.opacity = '0';
-    }
-    
-    if (container) {
-        container.style.transition = 'opacity 1s ease-out';
-        container.style.opacity = '0';
-    }
-    
-    if (marqueeContainer) {
-        marqueeContainer.style.transition = 'opacity 1s ease-out';
-        marqueeContainer.style.opacity = '0';
-    }
-    
-    // Redirect after fade out
-    setTimeout(() => {
-        // Change this to your main page
-        window.location.href = '../3d/3dmain.html';
-    }, 1000);
+    // The page transition system will handle the fade and navigation automatically
+    // No need for manual fade out code anymore - just let the transition system work!
+    console.log('🚀 Sparkly Enter button clicked! Transition system taking over...');
 }
 // Export the main functions for external use
 window.LoaderAPI = {
@@ -355,6 +360,12 @@ window.LoaderAPI = {
     handleEnterClick
 };
 
+// Initialize audio when DOM is ready (fallback)
+document.addEventListener('DOMContentLoaded', () => {
+    initAudio();
+});
+
 // Console messages
 console.log('%c🎬 Escape Da Vinci 2k26 Loader initialized!', 'color: #4584b4; font-size: 16px; font-weight: bold;');
 console.log('%c🎆 Sequence: Title → Clouds → Enter Button', 'color: white; font-size: 14px;');
+console.log('%c🎵 Background music will start automatically (if allowed by browser)', 'color: #ff6b9d; font-size: 12px;');
