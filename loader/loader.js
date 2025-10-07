@@ -268,7 +268,7 @@ export function onLoaderComplete(callback) {
                     callback();
                 }
                 // Optionally redirect to main page
-                // window.location.href = '../home/home.html';
+                // window.location.href = 'home/home.html';
             }, 1000);
         }
     }, 3000); // Show loader for at least 3 seconds
