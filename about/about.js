@@ -37,51 +37,63 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get the text block container
     const textBlock = document.querySelector(".text-block");
 
+    // Performance optimization: throttle pointer events
+    let isThrottled = false;
+    const throttleDelay = 16; // ~60fps
+
     // Add pointer move event listener for hover effect
     if (textBlock && st.chars.length > 0) {
         textBlock.onpointermove = (e) => {
-            st.chars.forEach((char) => {
-                const rect = char.getBoundingClientRect();
-                const cx = rect.left + rect.width / 2;
-                const cy = rect.top + rect.height / 2;
-                const dx = e.clientX - cx;
-                const dy = e.clientY - cy;
-                const dist = Math.sqrt(dx * dx + dy * dy);
+            if (isThrottled) return;
+            isThrottled = true;
+            
+            requestAnimationFrame(() => {
+                st.chars.forEach((char) => {
+                    const rect = char.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+                    const dx = e.clientX - cx;
+                    const dy = e.clientY - cy;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 100) {
+                        // Smooth glow/scale effect with optimized settings
+                        gsap.to(char, {
+                            overwrite: "auto",
+                            duration: 0.2,
+                            scale: 1.05,
+                            color: "#ff4444",
+                            textShadow: "0 0 8px #ff4444",
+                            ease: 'power1.out'
+                        });
+                    } else {
+                        // Reset to normal with faster transition
+                        gsap.to(char, {
+                            overwrite: "auto",
+                            duration: 0.3,
+                            scale: 1,
+                            color: "#ffffff",
+                            textShadow: "none",
+                            ease: 'power1.out'
+                        });
+                    }
+                });
                 
-                if (dist < 100) {
-                    // Simple glow/scale effect
-                    gsap.to(char, {
-                        overwrite: true,
-                        duration: 0.3,
-                        scale: 1.1,
-                        color: "#ff4444",
-                        textShadow: "0 0 10px #ff4444",
-                        ease: 'power2.out'
-                    });
-                } else {
-                    // Reset to normal
-                    gsap.to(char, {
-                        overwrite: true,
-                        duration: 0.5,
-                        scale: 1,
-                        color: "#ffffff",
-                        textShadow: "none",
-                        ease: 'power2.out'
-                    });
-                }
+                setTimeout(() => {
+                    isThrottled = false;
+                }, throttleDelay);
             });
         };
         
-        // Reset all chars when mouse leaves
+        // Reset all chars when mouse leaves with batch processing
         textBlock.onpointerleave = () => {
-            st.chars.forEach((char) => {
-                gsap.to(char, {
-                    duration: 0.5,
-                    scale: 1,
-                    color: "#ffffff",
-                    textShadow: "none",
-                    ease: 'power2.out'
-                });
+            gsap.to(st.chars, {
+                duration: 0.4,
+                scale: 1,
+                color: "#ffffff",
+                textShadow: "none",
+                ease: 'power1.out',
+                stagger: 0.01
             });
         };
     }

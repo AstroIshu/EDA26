@@ -6,6 +6,7 @@
     <title>Contact - EDA26</title>
     <link rel="stylesheet" href="../contact/contact.css">
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Simple Matrix Background Effect -->
@@ -16,6 +17,11 @@
     <div class="vhs-overlay">
         <div class="noise"></div>
         <div class="noise noise-moving"></div>
+    </div>
+
+    <!-- Web SVG Overlay -->
+    <div class="web-overlay">
+        <img src="../assets/web.svg" alt="Web" class="web-svg-icon">
     </div>
 
     <canvas id="starfield"></canvas>
@@ -38,10 +44,7 @@
          <div class="content">
                 <h1>Contact Us About Our Hackathon!</h1>
                 <p>
-                    Ready to innovate, create, and collaborate?<br> 
-                    Join us for an exciting hackathon experience where creativity meets technology.<br>
-                    Have questions about registration, rules, or partnerships? We're here to help!<br>
-                    Let's build the future together!
+                    Stuck in a puzzle? Need a clue to proceed? Reach out to our organizers. Reach out for any logistical, technical, or rule-related inquiries. We're here to ensure your Escape Da Vinci journey is smooth, thrilling, and unforgettable. Don't let a question hold you back from the adventure- connect with us and crack the code to success together
                 </p>
                 <div class="buttons">
                     <a href="mailto:hackathon@eda26.com" class="email" title="Email Us"><i class="fas fa-envelope" aria-hidden="true"></i></a>
@@ -62,12 +65,24 @@
                                 <a href="https://sponsor2.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/ff6b6b/ffffff?text=Sponsor+2" alt="Sponsor 2">
                                 </a>
+                                <div class="sponsor-item mystery-sponsor">
+                                    <div class="mystery-content">
+                                        <span class="mystery-symbol">?</span>
+                                        <span class="coming-soon">Coming Soon</span>
+                                    </div>
+                                </div>
                                 <a href="https://sponsor3.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/4ecdc4/ffffff?text=Sponsor+3" alt="Sponsor 3">
                                 </a>
                                 <a href="https://sponsor4.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/45b7d1/ffffff?text=Sponsor+4" alt="Sponsor 4">
                                 </a>
+                                <div class="sponsor-item mystery-sponsor">
+                                    <div class="mystery-content">
+                                        <span class="mystery-symbol">?</span>
+                                        <span class="coming-soon">Coming Soon</span>
+                                    </div>
+                                </div>
                                 <a href="https://sponsor5.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/f9ca24/000000?text=Sponsor+5" alt="Sponsor 5">
                                 </a>
@@ -79,12 +94,24 @@
                                 <a href="https://sponsor6.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/6c5ce7/ffffff?text=Sponsor+6" alt="Sponsor 6">
                                 </a>
+                                <div class="sponsor-item mystery-sponsor">
+                                    <div class="mystery-content">
+                                        <span class="mystery-symbol">?</span>
+                                        <span class="coming-soon">Coming Soon</span>
+                                    </div>
+                                </div>
                                 <a href="https://sponsor7.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/a29bfe/ffffff?text=Sponsor+7" alt="Sponsor 7">
                                 </a>
                                 <a href="https://sponsor8.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/fd79a8/ffffff?text=Sponsor+8" alt="Sponsor 8">
                                 </a>
+                                <div class="sponsor-item mystery-sponsor">
+                                    <div class="mystery-content">
+                                        <span class="mystery-symbol">?</span>
+                                        <span class="coming-soon">Coming Soon</span>
+                                    </div>
+                                </div>
                                 <a href="https://sponsor9.com" target="_blank" class="sponsor-item">
                                     <img src="https://via.placeholder.com/150x80/00b894/ffffff?text=Sponsor+9" alt="Sponsor 9">
                                 </a>
@@ -101,7 +128,7 @@
     <p>Ready to participate or have questions? Drop us a message and we'll get back to you!</p>
     <form 
         id="contact-form" 
-        action="https://formsubmit.co/hackathon@eda26.com" 
+        action="https://formsubmit.co/astroishu06@gmail.com" 
         method="POST"
     >
     <input type="hidden" name="_subject" value="New Hackathon Inquiry!">
@@ -124,11 +151,21 @@
             <option value="participation">Participation</option>
             <option value="sponsorship">Sponsorship</option>
             <option value="mentorship">Mentorship</option>
+            <option value="team-member-change">Team Member Change Policy</option>
+            <option value="confirmation-fee-refund">Confirmation Fee & Refund Details</option>
+            <option value="travel-accommodation">Travel & Accommodation Support</option>
+            <option value="project-continuity">Project Continuity Between Rounds</option>
+            <option value="hardware-provision">Hardware Provision for Robotics Track</option>
+            <option value="offline-venue-logistics">Offline Venue & "Locked In" Logistics</option>
+            <option value="judging-criteria">Detailed Judging Criteria</option>
+            <option value="internet-facilities">Internet & Technical Facilities</option>
+            <option value="mentor-availability">Mentor Availability During Offline Rounds</option>
+            <option value="code-of-conduct">Code of Conduct & Reporting Procedure</option>
             <option value="general">General Question</option>
         </select>
         
         <label for="message">Message</label>
-        <textarea id="message" name="message" required placeholder="Tell us about your interest in the hackathon..."></textarea>
+        <textarea id="message" name="message" required placeholder="Tell us about your queries..."></textarea>
         
         <button type="submit">Send Message</button>
     </form>
@@ -153,7 +190,7 @@
                                 
                                 <div class="team-member">
                                     <div class="member-image">
-                                        <img src="https://via.placeholder.com/150x150/4ecdc4/ffffff?text=Head+Developer" alt="Head Developer">
+                                        <img src="../assets/ishu128128.jpg" alt="Head Developer" onerror="this.src='https://via.placeholder.com/150x150/4ecdc4/ffffff?text=Head+Developer'">
                                     </div>
                                     <div class="member-info">
                                         <h3>AstroIshu - Head Developer</h3>
@@ -164,28 +201,6 @@
                                             <a href="https://linkedin.com/in/singhishant"><i class="fab fa-linkedin"></i></a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-info">
-                            <h2>Quick Contact</h2>
-                            <div class="contact-details">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>hackathon@eda26.com</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-phone"></i>
-                                    <span>+1 (555) 123-4567</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Virtual Event Platform</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>Available 24/7 during event</span>
                                 </div>
                             </div>
                         </div>
