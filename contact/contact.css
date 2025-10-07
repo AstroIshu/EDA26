@@ -1,24 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+@font-face {
+  font-family: PixelText;
+  src: url(https://assets.codepen.io/36869/Grand9KPixel.ttf);
+}
+
+/* Simple Matrix Background Effect - Performance Optimized */
+.matrix-grid-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    background: 
+        linear-gradient(90deg, transparent 98%, rgba(255, 68, 68, 0.3) 100%),
+        linear-gradient(rgba(255, 68, 68, 0.3) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: matrix-slide 20s linear infinite;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.matrix-grid-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(0deg, transparent 98%, rgba(255, 68, 68, 0.2) 100%),
+        linear-gradient(rgba(255, 68, 68, 0.2) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: matrix-slide-reverse 15s linear infinite;
+}
+
+.matrix-grid-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 68, 68, 0.1) 0%, transparent 70%);
+    animation: matrix-pulse 8s ease-in-out infinite;
+}
+
+@keyframes matrix-slide {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(100px) translateX(50px); }
+}
+
+@keyframes matrix-slide-reverse {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-50px) translateX(-25px); }
+}
+
+@keyframes matrix-pulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+/* VHS/CRT Overlay Effects - Low Opacity */
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+/* VHS Body overlay (very subtle) */
+body::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 500;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 1.6; /* Low opacity */
+}
+
+/* Noise Effects */
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 400;
+    opacity: 0.45; /* Much lower opacity */
+    pointer-events: none;
+}
+
+.noise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://ice-creme.de/images/background-noise.png');
+    pointer-events: none;
+}
+
+.noise-moving {
+    opacity: 0.7; /* Low opacity for moving noise */
+    z-index: 450;
+}
+
+.noise-moving::before {
+    will-change: background-position;
+    animation: vhs-noise 1s infinite alternate;
+}
+
+/* Scanlines */
+.scanlines {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 300;
+    opacity: 0.9; /* Low opacity for scanlines */
+    will-change: opacity;
+    animation: vhs-opacity 3s linear infinite;
+}
+
+.scanlines::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 51%);
+    background-size: 100% 4px;
+    will-change: background, background-size;
+    animation: vhs-scanlines 0.2s linear infinite;
+}
+
+/* VHS Overlay Container */
+.vhs-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 600;
+    opacity: 1.25; /* Overall low opacity for the entire overlay */
+}
+
+/* VHS Animations */
+@keyframes vhs-noise {
+    0%, 100% { background-position: 0 0; }
+    10% { background-position: -5% -10%; }
+    20% { background-position: -15% 5%; }
+    30% { background-position: 7% -25%; }
+    40% { background-position: 20% 25%; }
+    50% { background-position: -25% 10%; }
+    60% { background-position: 15% 5%; }
+    70% { background-position: 0 15%; }
+    80% { background-position: 25% 35%; }
+    90% { background-position: -10% 10%; }
+}
+
+@keyframes vhs-opacity {
+    0% { opacity: 0.2; }
+    20% { opacity: 0.1; }
+    35% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+    60% { opacity: 0.12; }
+    80% { opacity: 0.2; }
+    100% { opacity: 0.2; }
+}
+
+@keyframes vhs-scanlines {
+    from {
+        background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 51%);
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 50%, transparent 51%);
+        background-size: 100% 4px;
+    }
+}
+
+/* Base Styles */
 body {
     margin: 0;
     padding: 0;
     background-color: black;
     color: white;
-    font-family: monospace;
+    font-family: "Golos Text", monospace;
     overflow-x: hidden;
 }
 
+/* Container */
 .container {
     width: 100vw;
     min-height: 100vh;
 }
 
+/* Section */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 130px 10px 50px;
+    transition: padding-top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.section.padded {
+    padding-top: 140px;
+}
+
+/* Dynamic Island Navigation */
 .dynamic-island {
     position: fixed;
     top: 20px;
     left: 51%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.2);
-    border: 1px dashed #84b067;
+    border: 1px dashed #ff4444;
     border-radius: 38px;
     padding: 10px 30px;
     display: flex;
@@ -47,22 +258,35 @@ body {
     scale: 0.98;
 }
 
-.dynamic-island.shrunk .logo {
-    font-size: 25px;
-}
-
-.dynamic-island.shrunk .menu-items a {
-    font-size: 16px;
-}
-
 .logo {
-    color: #84b067;
+    font-size: 26px;
     font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 3px;
-    font-family: "Special Elite", monospace;
-    z-index: 2;
-    transition: font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    color: #ff4444;
+    line-height: 1.1;
+    transition: font-size 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-width: 100px;
+    max-height: 80px;
+}
+
+.logo img {
+    height: 90px;
+    width: auto;
+    transition: height 0.4s ease;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+    margin: 1;
+    transform: scale(0.5);
+}
+
+.dynamic-island.shrunk .logo,.dynamic-island.shrunk .logo .img {
+    font-size: 32px;
+    margin-top: 10px;
+    height: 50px;
 }
 
 .menu-items {
@@ -74,12 +298,28 @@ body {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    font-family: "Special Elite", monospace;
-    transition: color 0.3s ease, font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    font-weight: 500;
+    font-family: 'PixelText', serif;
+    transition: color 0.3s ease, font-size 0.4s ease;
+    cursor: pointer;
 }
 
 .menu-items a:hover {
-    color: #84b067;
+    color: #ff4444;
+}
+
+.dynamic-island.shrunk .menu-items a {
+    font-size: 16px;
+}
+
+/* Starfield Background */
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
 }
 
 .section {
@@ -87,9 +327,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 10px 50px;
-    background: url('bg.png') no-repeat center center;
-    background-size: cover;
+    padding: 130px 10px 50px;
     transition: padding-top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
@@ -100,18 +338,18 @@ body {
 .content {
     max-width: 1000px;
     background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #84b067;
+    border: 1px solid #ff4444;
     padding: 40px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     text-align: center;
     border-radius: 25px;
-    box-shadow: 0 4px 20px rgba(132, 176, 103, 0.2);
+    box-shadow: 0 4px 20px rgba(255, 68, 68, 0.2);
 }
 
 .content h1 {
-    color: #84b067;
+    color: #ff4444;
     font-size: 2.8rem;
-    font-family: "Special Elite", monospace;
+    font-family: "New Rocker", monospace;
     margin-bottom: 20px;
 }
 
@@ -139,14 +377,14 @@ body {
     background: rgba(17, 17, 17, 0.8);
     border: 1px solid #444;
     border-radius: 50%;
-    color: #84b067;
+    color: #ff4444;
     text-decoration: none;
     transition: all 0.3s ease;
     backdrop-filter: blur(2px);
 }
 
 .buttons a:hover {
-    background: #84b067;
+    background: #ff4444;
     color: black;
     transform: scale(1.1);
 }
@@ -167,7 +405,7 @@ body {
     width: 48%;
     background: rgba(0, 0, 0, 0.8);
     padding: 20px;
-    border: 1px dashed #84b067;
+    border: 1px dashed #ff4444;
     border-radius: 10px;
     backdrop-filter: blur(5px);
     display: flex;
@@ -185,7 +423,7 @@ body {
 .gif-container {
     background: rgba(0, 0, 0, 0.8);
     padding: 20px;
-    border: 1px dashed #84b067;
+    border: 1px dashed #ff4444;
     border-radius: 10px;
     backdrop-filter: blur(5px);
     flex: 1;
@@ -195,8 +433,8 @@ body {
 
 .contact-form h2,
 .coffee-widget h2 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: 1.5rem;
     margin-bottom: 15px;
 }
@@ -218,7 +456,7 @@ body {
 
 .contact-form label {
     font-family: "Special Elite", monospace;
-    color: #84b067;
+    color: #ff4444;
     font-size: 1.4rem;
 }
 
@@ -237,7 +475,7 @@ body {
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: #84b067;
+    border-color: #ff4444;
 }
 
 .contact-form textarea {
@@ -246,7 +484,7 @@ body {
 }
 
 .contact-form button {
-    background: #84b067;
+    background: #ff4444;
     color: black;
     border: none;
     padding: 10px 20px;
@@ -286,19 +524,19 @@ body {
     max-width: 550px;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(132, 176, 103, 0.2);
+    box-shadow: 0 4px 10px rgba(255, 68, 68, 0.2);
 }
 /* Sponsors Section Styles */
 .sponsors-section {
     margin: 40px 0;
     padding: 30px 0;
-    border-top: 1px dashed #84b067;
-    border-bottom: 1px dashed #84b067;
+    border-top: 1px dashed #ff4444;
+    border-bottom: 1px dashed #ff4444;
 }
 
 .sponsors-section h2 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 30px;
@@ -366,22 +604,22 @@ body {
 }
 
 .sponsor-item:hover img {
-    border-color: #84b067;
+    border-color: #ff4444;
 }
 
 /* Team Section Styles */
 .team-section {
     background: rgba(0, 0, 0, 0.8);
     padding: 25px;
-    border: 1px dashed #84b067;
+    border: 1px dashed #ff4444;
     border-radius: 10px;
     backdrop-filter: blur(5px);
     margin-bottom: 20px;
 }
 
 .team-section h2 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: 1.5rem;
     margin-bottom: 20px;
     text-align: center;
@@ -405,7 +643,7 @@ body {
 }
 
 .team-member:hover {
-    border-color: #84b067;
+    border-color: #ff4444;
     transform: translateY(-2px);
 }
 
@@ -417,7 +655,7 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid #84b067;
+    border: 2px solid #ff4444;
     object-fit: cover;
 }
 
@@ -426,8 +664,8 @@ body {
 }
 
 .member-info h3 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: 1.1rem;
     margin: 0 0 5px 0;
 }
@@ -451,16 +689,16 @@ body {
     justify-content: center;
     width: 30px;
     height: 30px;
-    background: rgba(132, 176, 103, 0.2);
-    border: 1px solid #84b067;
+    background: rgba(255, 68, 68, 0.2);
+    border: 1px solid #ff4444;
     border-radius: 50%;
-    color: #84b067;
+    color: #ff4444;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .member-contact a:hover {
-    background: #84b067;
+    background: #ff4444;
     color: black;
     transform: scale(1.1);
 }
@@ -469,14 +707,14 @@ body {
 .contact-info {
     background: rgba(0, 0, 0, 0.8);
     padding: 25px;
-    border: 1px dashed #84b067;
+    border: 1px dashed #ff4444;
     border-radius: 10px;
     backdrop-filter: blur(5px);
 }
 
 .contact-info h2 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: 1.5rem;
     margin-bottom: 20px;
     text-align: center;
@@ -500,11 +738,11 @@ body {
 }
 
 .contact-item:hover {
-    border-color: #84b067;
+    border-color: #ff4444;
 }
 
 .contact-item i {
-    color: #84b067;
+    color: #ff4444;
     width: 20px;
     text-align: center;
 }
@@ -525,7 +763,7 @@ body {
     font-size: 1rem;
     border-radius: 5px;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2384b067' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 16px;
@@ -534,7 +772,7 @@ body {
 
 .contact-form select:focus {
     outline: none;
-    border-color: #84b067;
+    border-color: #ff4444;
 }
 
 .contact-form select option {
@@ -635,103 +873,19 @@ button,
 
 ::-webkit-scrollbar-thumb {
   background: transparent;
-  border: 2px solid #84b067;
+  border: 2px solid #ff4444;
   border-radius: 10px;
   transition: background 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(132, 176, 103, 0.3);
+  background: rgba(255, 68, 68, 0.3);
 }
 
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #84b067 transparent;
+  scrollbar-color: #ff4444 transparent;
 }
 
-.dynamic-island {
-    position: fixed;
-    top: 20px;
-    left: 51%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px dashed #84b067;
-    border-radius: 38px;
-    padding: 10px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 60%;
-    max-width: 900px;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    opacity: 1;
-    scale: 1;
-    transition: width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-                padding 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-                top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-                max-width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-                opacity 0.4s ease,
-                scale 0.4s ease;
-}
 
-.dynamic-island.shrunk {
-    width: 40%;
-    max-width: 600px;
-    padding: 10px 20px;
-    top: 8px;
-    opacity: 0.95;
-    scale: 0.98;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #84b067;
-    line-height: 1.1;
-    transition: font-size 0.4s ease;
-}
-
-.dynamic-island.shrunk .logo {
-    font-size: 25px;
-}
-
-.menu-items {
-    display: flex;
-    gap: 30px;
-}
-
-.menu-items a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    transition: color 0.3s ease, font-size 0.4s ease;
-    cursor: pointer;
-}
-
-.menu-items a:hover {
-    color: #84b067;
-}
-
-.dynamic-island.shrunk .menu-items a {
-    font-size: 16px;
-}
-
-.section {
-    transition: padding-top 0.4s ease;
-}
-
-.section.padded {
-    padding-top: 80px;
-}
-.logo {
-    color: #84b067;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 3px;
-    font-family: "Special Elite", monospace;
-    z-index: 2;
-    transition: font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}

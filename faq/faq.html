@@ -6,20 +6,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDV26. - FAQ</title>
-    <link rel="stylesheet" href="../css/faq.css">
+    <link rel="stylesheet" href="../faq/faq.css">
 </head>
 <body>
+    <!-- Simple Matrix Background Effect -->
+    <div class="matrix-grid-container"></div>
+    
+    <!-- VHS/CRT Overlay Effects -->
+    <div class="scanlines"></div>
+    <div class="vhs-overlay">
+        <div class="noise"></div>
+        <div class="noise noise-moving"></div>
+    </div>
+
+    <canvas id="starfield"></canvas>
+
     <div class="dynamic-island" id="dynamic-island">
-        <div class="logo">EDV26.</div>
+        <div class="logo">
+            <img src="../assets/logos.png" alt="EDV26" onerror="this.src='../assets/logoedv.png.png'">
+        </div>
         <div class="menu-items">
-            <a href="main.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="../home/home.html">HOME</a>
+            <a href="../about/about.html">ABOUT</a>
+            <a href="../faq/faq.html">FAQ</a>
+            <a href="../contact/contact.html">CONTACT</a>
         </div>
     </div>
 
-    <div class="section main-content" style="padding-top: 120px;">
+        <div class=\"section main-content\">
         <div class="content-wrapper">
             <div class="container">
                 <div class="sprite-wrapper">
@@ -38,7 +52,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What is a Hackathon?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What is a Hackathon?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             A hackathon is an event where programmers, designers, and other tech enthusiasts collaborate intensively on software projects. Participants work in teams to create functioning software or hardware prototypes within a limited timeframe, usually 24-48 hours.
                                         </p>
@@ -50,7 +64,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">Who can participate?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">Who can participate?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Hackathons are open to students, professionals, and hobbyists of all skill levels. Most events welcome beginners and provide mentors to help guide participants through the process.
                                         </p>
@@ -75,7 +89,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How to form a team?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to form a team?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Teams typically consist of 2-5 members with complementary skills. You can form teams before the event or during team formation sessions at the hackathon beginning.
                                         </p>
@@ -87,7 +101,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What should I bring?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What should I bring?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Essential items for a hackathon include:
                                         </p>
@@ -112,7 +126,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How to choose a project?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to choose a project?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Select a project that aligns with the hackathon theme and your team's skills. Consider the time constraint and choose something ambitious but achievable within 24-48 hours.
                                         </p>
@@ -124,7 +138,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What technologies are commonly used?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What technologies are commonly used?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Popular technologies at hackathons include:
                                         </p>
@@ -145,7 +159,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How are projects judged?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How are projects judged?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Projects are typically judged on:
                                         </p>
@@ -160,7 +174,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What makes a good presentation?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What makes a good presentation?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             A compelling presentation should:
                                         </p>
@@ -181,7 +195,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">Can I use pre-existing code?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">Can I use pre-existing code?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Generally, you should write new code during the hackathon. However, you can use:
                                         </p>
@@ -199,7 +213,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How to manage time effectively?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to manage time effectively?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Effective time management strategies:
                                         </p>
@@ -220,7 +234,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What if I get stuck?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What if I get stuck?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Don't panic! Hackathons provide various resources:
                                         </p>
@@ -235,7 +249,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How important is sleep?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How important is sleep?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             While some participants pull all-nighters, getting adequate sleep is crucial for:
                                         </p>
@@ -259,7 +273,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What are common prizes?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What are common prizes?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Hackathon prizes vary but often include:
                                         </p>
@@ -274,7 +288,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How to network effectively?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to network effectively?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Networking opportunities at hackathons:
                                         </p>
@@ -295,7 +309,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What if I'm a beginner?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What if I'm a beginner?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Hackathons are excellent learning opportunities for beginners:
                                         </p>
@@ -310,7 +324,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How to prepare technically?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to prepare technically?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Technical preparation tips:
                                         </p>
@@ -331,7 +345,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What about intellectual property?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What about intellectual property?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Intellectual property rules vary by hackathon:
                                         </p>
@@ -345,7 +359,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How to handle team conflicts?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to handle team conflicts?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Team conflict resolution strategies:
                                         </p>
@@ -366,7 +380,7 @@
                             <div class="page-container">
                                 <div class="page left-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">What happens after the hackathon?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What happens after the hackathon?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Post-hackathon opportunities:
                                         </p>
@@ -381,7 +395,7 @@
                                 </div>
                                 <div class="page right-page">
                                     <div>
-                                        <h3 style="margin: 0 0 1rem 0; color: #f840a8;">How to find hackathons?</h3>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to find hackathons?</h3>
                                         <p style="margin: 0; text-indent: 1rem">
                                             Resources for finding hackathons:
                                         </p>
@@ -404,6 +418,12 @@
     </div>
     </div>
 
-    <script src="../js/faq.js"></script>
+    <!-- Background Music -->
+    <audio id="background-music" loop autoplay>
+        <source src="../audio/bg.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="../faq/faq.js"></script>
 </body>
 </html>

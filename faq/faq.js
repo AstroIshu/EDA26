@@ -32,6 +32,76 @@ window.addEventListener("scroll", () => {
     }
 });
 
+// Starfield Background
+const canvas = document.getElementById('starfield');
+
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function initStarfield() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        stars = [];
+        
+        // Different star shapes
+        const shapes = ['rect', 'cross', 'square'];
+        
+        for (let i = 0; i < 150; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 1,
+                speed: Math.random() * 0.1 + 0.05,
+                shape: shapes[Math.floor(Math.random() * shapes.length)],
+                opacity: Math.random() * 0.5 + 0.5,
+                flicker: Math.random() > 0.7 // Some stars will flicker
+            });
+        }
+    }
+
+    function drawStarfield() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        stars.forEach(star => {
+            // Set star color with opacity (red tint)
+            ctx.fillStyle = `rgba(255, 68, 68, ${star.flicker ? Math.abs(Math.sin(Date.now() * 0.002)) : star.opacity})`;
+            
+            // Draw different star shapes
+            if (star.shape === 'rect') {
+                ctx.fillRect(star.x, star.y, star.size, star.size);
+            } else if (star.shape === 'cross') {
+                ctx.beginPath();
+                ctx.moveTo(star.x - star.size, star.y);
+                ctx.lineTo(star.x + star.size, star.y);
+                ctx.moveTo(star.x, star.y - star.size);
+                ctx.lineTo(star.x, star.y + star.size);
+                ctx.strokeStyle = ctx.fillStyle;
+                ctx.stroke();
+            } else if (star.shape === 'square') {
+                ctx.fillRect(star.x - star.size / 2, star.y - star.size / 2, star.size, star.size);
+            }
+            
+            // Move star to the left
+            star.x -= star.speed;
+            
+            // Reset star to right side when it goes off screen
+            if (star.x < 0) star.x = canvas.width;
+        });
+        
+        requestAnimationFrame(drawStarfield);
+    }
+
+    // Initialize and start animation
+    initStarfield();
+    drawStarfield();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        initStarfield();
+    });
+}
+
 // Carousel Scroll Buttons and Markers
 document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
