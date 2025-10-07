@@ -34,7 +34,6 @@ window.addEventListener("scroll", () => {
 import * as THREE from "https://unpkg.com/three@0.161.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.161.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://unpkg.com/three@0.161.0/examples/jsm/loaders/GLTFLoader.js";
-import { GUI } from 'https://unpkg.com/dat.gui@0.7.9/build/dat.gui.module.js';
 import { EffectComposer } from "https://unpkg.com/three@0.161.0/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "https://unpkg.com/three@0.161.0/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "https://unpkg.com/three@0.161.0/examples/jsm/postprocessing/UnrealBloomPass.js";
@@ -201,151 +200,13 @@ const bloomPass = new UnrealBloomPass(
 );
 composer.addPass(bloomPass);
 
-// dat.GUI Setup
-const gui = new GUI({ width: 350 });
-
-// Torus Controls
-const torusFolder = gui.addFolder('Torus');
-torusFolder.add(torus.position, 'x', -5, 5, 0.1).name('Position X');
-torusFolder.add(torus.position, 'y', -5, 5, 0.1).name('Position Y');
-torusFolder.add(torus.position, 'z', -5, 5, 0.1).name('Position Z');
-torusFolder.add(torus.rotation, 'x', 0, Math.PI * 2, 0.1).name('Rotation X');
-torusFolder.add(torus.rotation, 'y', 0, Math.PI * 2, 0.1).name('Rotation Y');
-torusFolder.add(torus.rotation, 'z', 0, Math.PI * 2, 0.1).name('Rotation Z');
-torusFolder.add(material, 'emissiveIntensity', 0, 10, 0.1).name('Emissive Intensity');
-torusFolder.addColor({ color: '#2555FD' }, 'color').onChange((value) => {
-    material.color.set(value);
-    material.emissive.set(value);
-}).name('Color');
-// Camera Controls
-const cameraFolder = gui.addFolder('Camera');
-cameraFolder.add(camera.position, 'x', -10, 10, 0.1).name('Position X');
-cameraFolder.add(camera.position, 'y', -10, 10, 0.1).name('Position Y');
-cameraFolder.add(camera.position, 'z', -10, 10, 0.1).name('Position Z');
-cameraFolder.add(camera, 'fov', 10, 150, 1).onChange(() => {
-    camera.updateProjectionMatrix();
-}).name('Field of View');
-
-// Torus Light Controls
-const torusLightFolder = gui.addFolder('Torus Light');
-torusLightFolder.add(torusLight.position, 'x', -5, 5, 0.1).name('Position X');
-torusLightFolder.add(torusLight.position, 'y', -5, 5, 0.1).name('Position Y');
-torusLightFolder.add(torusLight.position, 'z', -5, 5, 0.1).name('Position Z');
-torusLightFolder.add(torusLight, 'intensity', 0, 200, 1).name('Base Intensity');
-torusLightFolder.add(torusLight, 'distance', 0, 10, 0.1).name('Distance');
-torusLightFolder.add(torusLight, 'decay', 0, 5, 0.1).name('Decay');
-torusLightFolder.addColor({ color: '#ffffff' }, 'color').onChange((value) => {
-    torusLight.color.set(value);
-}).name('Color');
-
-// Spot Light Controls
-const spotLightFolder = gui.addFolder('Spot Light');
-spotLightFolder.add(spotLight.position, 'x', -10, 10, 0.1).name('Position X');
-spotLightFolder.add(spotLight.position, 'y', -10, 10, 0.1).name('Position Y');
-spotLightFolder.add(spotLight.position, 'z', -10, 10, 0.1).name('Position Z');
-spotLightFolder.add(spotLight, 'intensity', 0, 50, 1).name('Intensity');
-spotLightFolder.add(spotLight, 'distance', 0, 200, 1).name('Distance');
-spotLightFolder.add(spotLight, 'angle', 0, Math.PI / 2, 0.01).name('Angle');
-spotLightFolder.add(spotLight, 'penumbra', 0, 1, 0.01).name('Penumbra');
-spotLightFolder.addColor({ color: '#ffffff' }, 'color').onChange((value) => {
-    spotLight.color.set(value);
-}).name('Color');
-
-// Rim Light Controls
-const rimLightFolder = gui.addFolder('Rim Light');
-rimLightFolder.add(rimLight.position, 'x', -10, 10, 0.1).name('Position X');
-rimLightFolder.add(rimLight.position, 'y', -10, 10, 0.1).name('Position Y');
-rimLightFolder.add(rimLight.position, 'z', -10, 10, 0.1).name('Position Z');
-rimLightFolder.add(rimLight, 'intensity', 0, 50, 1).name('Intensity');
-rimLightFolder.add(rimLight, 'distance', 0, 10, 0.1).name('Distance');
-rimLightFolder.add(rimLight, 'decay', 0, 5, 0.1).name('Decay');
-rimLightFolder.addColor({ color: '#ffffff' }, 'color').onChange((value) => {
-    rimLight.color.set(value);
-}).name('Color');
-
-// Bloom Effect Controls
-const bloomFolder = gui.addFolder('Bloom Effect');
-bloomFolder.add(bloomPass, 'strength', 0, 3, 0.01).name('Strength');
-bloomFolder.add(bloomPass, 'radius', 0, 2, 0.01).name('Radius');
-bloomFolder.add(bloomPass, 'threshold', 0, 1, 0.01).name('Threshold');
-
-// Animation Controls
+// Animation Controls (keeping default values)
 const animationParams = {
     flickerSpeed: 0.02,
     flickerIntensity: 10,
     autoRotation: true,
     rotationSpeed: 1
 };
-
-const animationFolder = gui.addFolder('Animation');
-animationFolder.add(animationParams, 'flickerSpeed', 0, 0.1, 0.001).name('Flicker Speed');
-animationFolder.add(animationParams, 'flickerIntensity', 0, 50, 1).name('Flicker Intensity');
-animationFolder.add(animationParams, 'autoRotation').name('Auto Rotation');
-animationFolder.add(animationParams, 'rotationSpeed', 0, 5, 0.1).name('Rotation Speed');
-
-// Group Controls
-const groupFolder = gui.addFolder('Group Transform');
-groupFolder.add(group.position, 'x', -10, 10, 0.1).name('Position X');
-groupFolder.add(group.position, 'y', -10, 10, 0.1).name('Position Y');
-groupFolder.add(group.position, 'z', -10, 10, 0.1).name('Position Z');
-groupFolder.add(group.rotation, 'x', 0, Math.PI * 2, 0.1).name('Rotation X');
-groupFolder.add(group.rotation, 'y', 0, Math.PI * 2, 0.1).name('Rotation Y');
-groupFolder.add(group.rotation, 'z', 0, Math.PI * 2, 0.1).name('Rotation Z');
-
-gui.close();
-// Scene Controls
-const sceneFolder = gui.addFolder('Scene');
-sceneFolder.addColor({ backgroundColor: '#000000' }, 'backgroundColor').onChange((value) => {
-    scene.background = new THREE.Color(value);
-}).name('Background Color');
-
-// Renderer Controls
-const rendererFolder = gui.addFolder('Renderer');
-rendererFolder.add(renderer, 'toneMappingExposure', 0, 3, 0.01).name('Exposure');
-
-// Helper toggles
-const helpersFolder = gui.addFolder('Helpers');
-
-
-const helperControls = {
-    showTorusLightHelper: false,
-    showSpotLightHelper: false,
-    showRimLightHelper: false,
-    showFillLightHelper: false
-};
-
-
-helpersFolder.add(helperControls, 'showTorusLightHelper').onChange((value) => {
-    if (value) {
-        scene.add(torusLightHelper);
-    } else {
-        scene.remove(torusLightHelper);
-    }
-}).name('Torus Light Helper');
-
-helpersFolder.add(helperControls, 'showSpotLightHelper').onChange((value) => {
-    if (value) {
-        scene.add(spotLightHelper);
-    } else {
-        scene.remove(spotLightHelper);
-    }
-}).name('Spot Light Helper');
-
-helpersFolder.add(helperControls, 'showRimLightHelper').onChange((value) => {
-    if (value) {
-        scene.add(rimLightHelper);
-    } else {
-        scene.remove(rimLightHelper);
-    }
-}).name('Rim Light Helper');
-
-helpersFolder.add(helperControls, 'showFillLightHelper').onChange((value) => {
-    if (value) {
-        scene.add(fillLightHelper);
-    } else {
-        scene.remove(fillLightHelper);
-    }
-}).name('Fill Light Helper');
 
 
 

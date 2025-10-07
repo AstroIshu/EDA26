@@ -115,6 +115,254 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('About page animations loaded');
 });
 
+// Countdown Clock Implementation
+const DEFAULT_CHARACTERS = 'abcdefghijklmnopqrstuvwxyz';
+const easeOutCubic = (t) => {
+    return 1 - (1 - t) ** 4;
+};
+
+class FlipSlot {
+    constructor(options = {}) {
+        const {
+            characters = DEFAULT_CHARACTERS,
+            color = '#fff',
+            pad = 0,
+        } = options;
+        this.characters = Array.from(`${characters}`);
+        this.color = color;
+        this.pad = pad;
+        this.index = 0;
+        this.currentValue = this.characters[this.index];
+        this.nextValue = this.characters[this.index + 1];
+        this.element = this.create();
+    }
+    
+    create() {
+        const { currentValue, nextValue } = this;
+        const element = Object.assign(document.createElement('div'), {
+            className: 'flip',
+            style: `--color: ${this.color}`,
+            innerHTML: `
+                <div>${nextValue}</div>
+                <div>${nextValue}</div>
+                <div>${currentValue}</div>
+                <div>${currentValue}</div>
+            `,
+        });
+        return element;
+    }
+    
+    setValue(value) {
+        this.index = this.characters.indexOf(value) || 0;
+        this.currentValue = this.characters[this.index];
+        this.nextValue = this.characters[this.index + 1] || this.characters[0];
+        this.element.innerHTML = `
+            <div>${this.nextValue}</div>
+            <div>${this.nextValue}</div>
+            <div>${this.currentValue}</div>
+            <div>${this.currentValue}</div>
+        `;
+    }
+    
+    async flip() {
+        const { characters: chars, element, currentValue, index } = this;
+        const shift = 1;
+        const travel = shift + index;
+        
+        const [unfoldTop, unfoldBottom, foldTop, foldBottom] = Array.from(
+            element.querySelectorAll('div')
+        );
+        
+        let run = 0;
+        const duration = 400;
+        
+        while (this.index < travel) {
+            this.currentValue = chars[this.index % chars.length];
+            this.nextValue = chars[(this.index + 1) % chars.length];
+            unfoldTop.innerText = unfoldBottom.innerText = this.nextValue;
+            foldTop.innerText = foldBottom.innerText = this.currentValue;
+            
+            await Promise.allSettled([
+                // Unfold top brightens as it becomes visible
+                unfoldTop.animate(
+                    {
+                        filter: ['brightness(0.3)', 'brightness(1)'],
+                        transform: ['scaleY(1)', 'scaleY(1)']
+                    },
+                    {
+                        duration: duration * 0.6,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                        fill: 'both',
+                        delay: duration * 0.4
+                    }
+                ).finished,
+                
+                // Unfold bottom rotates from back to front
+                unfoldBottom.animate(
+                    {
+                        transform: ['rotateX(-180deg)', 'rotateX(0deg)'],
+                        filter: ['brightness(0.7)', 'brightness(1)']
+                    },
+                    {
+                        duration: duration * 0.7,
+                        easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        fill: 'both',
+                        delay: duration * 0.3
+                    }
+                ).finished,
+                
+                // Fold top rotates away
+                foldTop.animate(
+                    {
+                        transform: ['rotateX(0deg)', 'rotateX(-90deg)'],
+                        filter: ['brightness(1)', 'brightness(0.3)']
+                    },
+                    {
+                        duration: duration * 0.5,
+                        easing: 'cubic-bezier(0.55, 0.085, 0.68, 0.53)',
+                        fill: 'both',
+                    }
+                ).finished,
+                
+                // Fold bottom dims as it becomes hidden
+                foldBottom.animate(
+                    {
+                        filter: ['brightness(1)', 'brightness(0.3)'],
+                        transform: ['scaleY(1)', 'scaleY(0.98)']
+                    },
+                    {
+                        duration: duration * 0.4,
+                        easing: 'ease-out',
+                        fill: 'both',
+                    }
+                ).finished,
+            ]);
+            
+            this.index++;
+            run++;
+            this.currentValue = chars[this.index % chars.length];
+            this.nextValue = chars[(this.index + 1) % chars.length];
+        }
+    }
+}
+
+// Initialize countdown
+function initCountdown() {
+    const board = document.querySelector('.board');
+    if (!board) return;
+    
+    // Target date: January 21, 2026, 10:00 AM
+    const targetDate = new Date('2026-01-21T10:00:00');
+    
+    function getTimeDifference() {
+        const now = new Date();
+        const diff = Math.max(0, targetDate.getTime() - now.getTime());
+        
+        if (diff === 0) {
+            return ['0', '0', '0', '0', '0', '0', '0', '0', '0'];
+        }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const pad = (num) => String(num).padStart(2, '0');
+        let result = `${String(days).padStart(3, '0')}${pad(hours)}${pad(minutes)}${pad(seconds)}`;
+        
+        return result.split('');
+    }
+    
+    // Create flip slots
+    const slots = {
+        hundredday: new FlipSlot({ characters: '9876543210' }),
+        tenday: new FlipSlot({ characters: '9876543210' }),
+        day: new FlipSlot({ characters: '9876543210' }),
+        tenhour: new FlipSlot({ characters: '210' }),
+        hour: new FlipSlot({ characters: '9876543210' }),
+        tenminute: new FlipSlot({ characters: '543210' }),
+        minute: new FlipSlot({ characters: '9876543210' }),
+        tensecond: new FlipSlot({ characters: '543210' }),
+        second: new FlipSlot({ characters: '9876543210' }),
+    };
+    
+    // Add slots to board
+    Object.keys(slots).forEach((slot, index) => {
+        slots[slot].element.dataset.key = slot;
+        board.appendChild(slots[slot].element);
+        
+        if (slot === 'day' || slot === 'hour' || slot === 'minute') {
+            const sep = Object.assign(document.createElement('span'), {
+                innerText: '',
+            });
+            sep.dataset.key = slot;
+            board.appendChild(sep);
+        }
+    });
+    
+    function setDigits(timeArray) {
+        Object.keys(slots).forEach((slot, index) => {
+            slots[slot].setValue(timeArray[index]);
+        });
+        
+        // Hide leading zeros for days and hours
+        let hide = '';
+        const [hundredday, tenday, day, tenhour, hour] = timeArray;
+        
+        if (hundredday === '0' && tenday === '0' && day === '0') {
+            hide += 'day ';
+        }
+        if (hundredday === '0' && tenday === '0' && day === '0' && tenhour === '0' && hour === '0') {
+            hide += 'hour ';
+        }
+        
+        board.dataset.hide = hide;
+    }
+    
+    function isFinished() {
+        return Object.values(slots).every((slot) => slot.currentValue === '0');
+    }
+    
+    let interval;
+    
+    function startTimer() {
+        setDigits(getTimeDifference());
+        
+        if (interval) clearInterval(interval);
+        
+        interval = setInterval(async () => {
+            if (isFinished()) {
+                clearInterval(interval);
+                console.log('Countdown finished!');
+                return;
+            }
+            
+            const flips = new Array(Object.keys(slots).length);
+            flips[Object.keys(slots).length - 1] = slots.second.flip();
+            
+            for (let i = Object.keys(slots).length - 1; i >= 0; i--) {
+                const slot = slots[Object.keys(slots)[i]];
+                if (
+                    (slot.index + 1) % slot.characters.length === 0 &&
+                    i > 0 &&
+                    flips[i] !== undefined
+                ) {
+                    flips[i - 1] = slots[Object.keys(slots)[i - 1]].flip();
+                }
+            }
+            
+            await Promise.allSettled(flips);
+        }, 1000);
+    }
+    
+    // Initialize with current time difference
+    setDigits(getTimeDifference());
+    startTimer();
+}
+
+// Initialize countdown when page loads
+document.addEventListener('DOMContentLoaded', initCountdown);
+
 // Starfield Background
 const canvas = document.getElementById('starfield');
 
@@ -147,8 +395,8 @@ if (canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         stars.forEach(star => {
-            // Set star color with opacity (greenish tint)
-            ctx.fillStyle = `rgba(132, 176, 103, ${star.flicker ? Math.abs(Math.sin(Date.now() * 0.002)) : star.opacity})`;
+            // Set star color with opacity (red tint)
+            ctx.fillStyle = `rgba(255, 68, 68, ${star.flicker ? Math.abs(Math.sin(Date.now() * 0.002)) : star.opacity})`;
             
             // Draw different star shapes
             if (star.shape === 'rect') {

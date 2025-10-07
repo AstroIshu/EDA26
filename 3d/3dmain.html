@@ -13,6 +13,16 @@
     <script src="https://assets.codepen.io/16327/SplitText3.min.js" defer></script>
   </head>
   <body>
+    <!-- Simple Matrix Background Effect -->
+    <div class="matrix-grid-container"></div>
+    
+    <!-- VHS/CRT Overlay Effects -->
+    <div class="scanlines"></div>
+    <div class="vhs-overlay">
+        <div class="noise"></div>
+        <div class="noise noise-moving"></div>
+    </div>
+    
     <script type="importmap">
 {
     "imports": {
@@ -32,16 +42,18 @@
             <div id="loader"></div>
         </div> -->
         <!-- <p class="loader-text" id="loading-text">Loading</p> -->
-        <p class="loader-info-text">Please wait while the model is loading...</p>
+        <p class="loader-info-text">Model Loading...</p>
     </div>
  
     <main>
         <!-- Dynamic Island Navigation -->
         <div class="dynamic-island" id="dynamic-island">
-            <div class="logo">EDV26.</div>
+            <div class="logo">
+                <img src="../assets/logos.png" alt="EDV26" onerror="this.src='../assets/logoedv.png.png'">
+            </div>
             <div class="menu-items">
-                <a href="../pages/main.html">HOME</a>
-                <a href="../pages/about.html">ABOUT</a>
+                <a href="../3d/3dmain.html">HOME</a>
+                <a href="../about/index.html">ABOUT</a>
                 <a href="../pages/faq.html">FAQ</a>
                 <a href="../pages/contact.html">CONTACT</a>
             </div>
@@ -106,6 +118,12 @@
             </div>
         </section>
     </main>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop autoplay>
+        <source src="../audio/bg.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script type="module" src="../3d/3dmain.js"></script>
   </body>

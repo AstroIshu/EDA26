@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 /* Base Styles */
 body {
@@ -6,7 +9,7 @@ body {
     padding: 0;
     background-color: black;
     color: white;
-    font-family: monospace;
+    font-family: "Golos Text", monospace;
     overflow-x: hidden;
 }
 
@@ -22,7 +25,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 120px 10px 50px;
+    padding: 130px 10px 50px;
     transition: padding-top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
@@ -45,12 +48,12 @@ body {
 .content {
     max-width: 1200px;
     background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #84b067;
+    border: 1px solid #ff4444;
     padding: 40px;
     backdrop-filter: blur(10px);
     text-align: center;
     border-radius: 25px;
-    box-shadow: 0 4px 20px rgba(132, 176, 103, 0.2);
+    box-shadow: 0 4px 20px rgba(255, 68, 68, 0.2);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -58,19 +61,19 @@ body {
 }
 
 .content h1 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: clamp(2.5rem, 6vw, 4rem);
     text-align: center;
-    margin: 0 0 40px 0;
+    margin: 0 0 20px 0;
     font-weight: bold;
 }
 
 /* Text Block with Special Effect */
 .text-block {
-    margin: 40px auto;
+    margin: 20px auto;
     max-width: 800px;
-    font-family: "Space Mono", monospace;
+    font-family: "Share Tech Mono", monospace;
     font-weight: 400;
     font-style: normal;
     font-size: clamp(16px, 4vw, 24px);
@@ -90,8 +93,8 @@ body {
 }
 
 .timeline-section h2 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: 2.5rem;
     margin-bottom: 40px;
     text-align: center;
@@ -110,8 +113,8 @@ body {
     top: 100px;
     font-size: clamp(18px, 2.5vw, 28px);
     font-weight: bold;
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     min-width: 180px;
     max-width: 200px;
     flex-shrink: 0;
@@ -135,8 +138,8 @@ body {
 }
 
 .time-subtitle:hover {
-    color: #84b067;
-    border-bottom-color: #84b067;
+    color: #ff4444;
+    border-bottom-color: #ff4444;
 }
 
 .section-content {
@@ -166,8 +169,8 @@ main {
 }
 
 main h3 {
-    color: #84b067;
-    font-family: "Special Elite", monospace;
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
     font-size: 1.3rem;
     margin-bottom: 10px;
 }
@@ -186,7 +189,7 @@ main p {
     height: var(--size);
     margin: calc((1rem - var(--size))/2);
     border-radius: 50%;
-    background-color: #84b067;
+    background-color: #ff4444;
     flex-grow: 0;
     flex-shrink: 0;
 }
@@ -195,12 +198,12 @@ main p {
     flex-grow: 1;
     margin: 8px 0;
     width: 3px;
-    background-color: #84b067;
+    background-color: #ff4444;
     min-height: 60px;
 }
 
 .line.last {
-    background: linear-gradient(to bottom, #84b067, transparent);
+    background: linear-gradient(to bottom, #ff4444, transparent);
 }
 
 /* Responsive Design */
@@ -301,7 +304,7 @@ main p {
     left: 51%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.2);
-    border: 1px dashed #84b067;
+    border: 1px dashed #ff4444;
     border-radius: 38px;
     padding: 10px 30px;
     display: flex;
@@ -330,22 +333,35 @@ main p {
     scale: 0.98;
 }
 
-.dynamic-island.shrunk .logo {
-    font-size: 25px;
-}
-
-.dynamic-island.shrunk .menu-items a {
-    font-size: 16px;
-}
-
 .logo {
-    color: #84b067;
+    font-size: 26px;
     font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 3px;
-    font-family: "Special Elite", monospace;
-    z-index: 2;
-    transition: font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    color: #ff4444;
+    line-height: 1.1;
+    transition: font-size 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-width: 100px;
+    max-height: 80px;
+}
+
+.logo img {
+    height: 90px;
+    width: auto;
+    transition: height 0.4s ease;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+    margin: 1;
+    transform: scale(0.5);
+}
+
+.dynamic-island.shrunk .logo,.dynamic-island.shrunk .logo .img {
+    font-size: 32px;
+    margin-top: 10px;
+    height: 50px;
 }
 
 .menu-items {
@@ -357,12 +373,17 @@ main p {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    font-family: "Special Elite", monospace;
-    transition: color 0.3s ease, font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    font-weight: 500;
+    transition: color 0.3s ease, font-size 0.4s ease;
+    cursor: pointer;
 }
 
 .menu-items a:hover {
-    color: #84b067;
+    color: #ff4444;
+}
+
+.dynamic-island.shrunk .menu-items a {
+    font-size: 16px;
 }
 
 /* Starfield Background */
@@ -372,12 +393,13 @@ main p {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -5;
 }
 
 /* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
     width: 9px;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-track {
@@ -385,19 +407,279 @@ main p {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: transparent;
-    border: 2px solid #84b067;
+    background: #ff4444;
     border-radius: 10px;
     transition: background 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(132, 176, 103, 0.3);
+    background: rgba(255, 68, 68, 0.7);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 html {
     scrollbar-width: thin;
-    scrollbar-color: #84b067 transparent;
+    scrollbar-color: #ff4444 transparent;
+}
+
+/* Countdown Clock Styles */
+.countdown-section {
+    margin: 40px 0 60px 0;
+    padding: 30px 0;
+    border-top: 2px dashed rgba(255, 68, 68, 0.3);
+    border-bottom: 2px dashed rgba(255, 68, 68, 0.3);
+    text-align: center;
+}
+
+.countdown-section h2 {
+    color: #ff4444;
+    font-family: "New Rocker", monospace;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.countdown-description {
+    color: #e0e0e0;
+    font-family: "Share Tech Mono", monospace;
+    font-size: clamp(14px, 2.5vw, 18px);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.board {
+    align-items: center;
+    display: flex;
+    gap: 0.8ch;
+    position: relative;
+    flex-direction: row;
+    font-family: 'Roboto Mono', monospace;
+    padding: 25px 30px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ff4444;
+    border-radius: 15px;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: fit-content;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 8px 32px rgba(255, 68, 68, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    min-height: 80px;
+}
+
+.board > span[data-key] {
+    display: inline-block;
+    width: 0;
+    opacity: 0.7;
+    height: 100%;
+    position: relative;
+    color: #ff4444;
+}
+
+.board > span[data-key]::before,
+.board > span[data-key]::after {
+    content: '';
+    position: absolute;
+    width: 0.5ch;
+    top: 50%;
+    left: 50%;
+    translate: -50% -150%;
+    aspect-ratio: 1;
+    background: currentColor;
+    border-radius: 50%;
+}
+
+.board > span[data-key]::after {
+    translate: -50% 75%;
+}
+
+.board[data-hide*='day'] [data-key*='day'],
+.board[data-hide*='hour'] [data-key*='hour'] {
+    display: none;
+}
+
+.flip {
+    --font-level: 8;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--color, #fff);
+    width: 1.8ch;
+    line-height: 1.2;
+    display: inline-block;
+    height: 1.4lh;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    margin: 0 2px;
+}
+
+.flip::before,
+.flip::after {
+    content: '';
+    position: absolute;
+    width: 8%;
+    height: 15%;
+    background: rgba(255, 68, 68, 0.4);
+    top: 50%;
+    translate: 0 -50%;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.flip::before {
+    left: 3%;
+}
+
+.flip::after {
+    right: 3%;
+}
+
+.flip .flip-holder {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+.flip div {
+    position: absolute;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 68, 68, 0.15) 0%,
+        rgba(20, 20, 20, 0.95) 10%,
+        rgba(15, 15, 15, 0.98) 90%,
+        rgba(255, 68, 68, 0.1) 100%
+      );
+    border: 1px solid rgba(255, 68, 68, 0.4);
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 68, 68, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.flip div:nth-of-type(1) {
+    /* Top unfold part */
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 47%,
+      92% 47%,
+      92% 50%,
+      8% 50%,
+      8% 47%,
+      0 47%
+    );
+    transform-origin: bottom;
+    z-index: 1;
+}
+
+.flip div:nth-of-type(2) {
+    /* Bottom unfold part */
+    clip-path: polygon(
+      0 53%,
+      8% 53%,
+      8% 50%,
+      92% 50%,
+      92% 53%,
+      100% 53%,
+      100% 100%,
+      0 100%
+    );
+    transform-origin: top;
+    z-index: 2;
+    transform: rotateX(-180deg);
+    backface-visibility: hidden;
+}
+
+.flip div:nth-of-type(3) {
+    /* Top fold part */
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 47%,
+      92% 47%,
+      92% 50%,
+      8% 50%,
+      8% 47%,
+      0 47%
+    );
+    transform-origin: bottom;
+    z-index: 3;
+    backface-visibility: hidden;
+}
+
+.flip div:nth-of-type(4) {
+    /* Bottom fold part */
+    clip-path: polygon(
+      0 53%,
+      8% 53%,
+      8% 50%,
+      92% 50%,
+      92% 53%,
+      100% 53%,
+      100% 100%,
+      0 100%
+    );
+    transform-origin: top;
+    z-index: 1;
+}
+
+.countdown-labels {
+    display: flex;
+    gap: 0.5ch;
+    justify-content: center;
+    margin-top: 15px;
+    font-family: "Share Tech Mono", monospace;
+    font-size: clamp(12px, 2vw, 14px);
+    color: #aaa;
+}
+
+.countdown-labels > span {
+    width: 1.5ch;
+    text-align: center;
+}
+
+.countdown-labels > span.separator {
+    width: 0.5ch;
+    opacity: 0;
+}
+
+@media (max-width: 768px) {
+    .countdown-section {
+        margin: 30px 0 40px 0;
+        padding: 20px 0;
+    }
+    
+    .board {
+        padding: 20px 25px;
+        gap: 0.6ch;
+        min-height: 70px;
+    }
+    
+    .flip {
+        font-size: clamp(1.2rem, 6vw, 2rem);
+        width: 1.6ch;
+        height: 1.3lh;
+        margin: 0 1px;
+    }
+    
+    .flip::before,
+    .flip::after {
+        width: 10%;
+        height: 12%;
+    }
 }
 
 /* Dynamic Island Responsive Design */
