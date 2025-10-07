@@ -306,15 +306,34 @@ function startSequence() {
     // Step 1: Title is already visible (CSS animation)
     console.log('📝 Title "Escape Da Vinci 2k26" displayed');
     
-    // Step 2: Fade in clouds after 1 second
+    // Step 2: Fade in clouds and rainbow overlay after 2 seconds
     setTimeout(() => {
         fadeInClouds();
-    }, 1000);
+        showRainbowOverlay();
+    }, 2000);
     
     // Step 3: Show Enter button after 5 seconds total
     setTimeout(() => {
         showEnterButton();
     }, 5000);
+}
+
+// Show rainbow overlay
+function showRainbowOverlay() {
+    const rainbowOverlay = document.getElementById('rainbowOverlay');
+    if (rainbowOverlay) {
+        rainbowOverlay.classList.add('show');
+        console.log('🌈 Rainbow overlay sliding in behind clouds...');
+    }
+}
+
+// Hide rainbow overlay
+function hideRainbowOverlay() {
+    const rainbowOverlay = document.getElementById('rainbowOverlay');
+    if (rainbowOverlay) {
+        rainbowOverlay.classList.remove('show');
+        console.log('🌈 Rainbow overlay fading out...');
+    }
 }
 
 // Fade in the cloud animation
@@ -357,6 +376,8 @@ window.LoaderAPI = {
     startSequence,
     fadeInClouds,
     showEnterButton,
+    showRainbowOverlay,
+    hideRainbowOverlay,
     handleEnterClick
 };
 
@@ -367,5 +388,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Console messages
 console.log('%c🎬 Escape Da Vinci 2k26 Loader initialized!', 'color: #4584b4; font-size: 16px; font-weight: bold;');
-console.log('%c🎆 Sequence: Title → Clouds → Enter Button', 'color: white; font-size: 14px;');
+console.log('%c🎆 Sequence: Title → Clouds + Rainbow → Enter Button', 'color: white; font-size: 14px;');
 console.log('%c🎵 Background music will start automatically (if allowed by browser)', 'color: #ff6b9d; font-size: 12px;');

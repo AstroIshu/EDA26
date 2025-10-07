@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+@font-face {
+  font-family: PixelText;
+  src: url(https://assets.codepen.io/36869/Grand9KPixel.ttf);
+}
 
 /* Simple Matrix Background Effect - Performance Optimized */
 .matrix-grid-container {
@@ -278,11 +284,11 @@ p                                       {color: #949494;}
 .img-main:hover:after                   {content: '';position: absolute;top: -100%;left: -100%;height: 200%;width: 200%;background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);animation: slide 1s forwards;filter: blur(33px);}
 /*  */
 /* Card Content */
-.card-content                           {position: relative;z-index: 2;width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;}
+.card-content                           {position: relative;z-index: 2;width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;padding: 10px;}
 
-.card-content h3                        {color: #D6F844;font-size: 24px;font-weight: 700;margin-bottom: 15px;font-family: "Golos Text", sans-serif;}
+.card-content h3                        {color: red;font-size: 20px;font-weight: 700;margin-bottom: 15px;font-family: 'PixelText', serif;line-height: 1.2;text-align: center;letter-spacing: 0.5px;text-shadow: 0 0 4px rgba(255, 0, 0, 0.3);}
 
-.card-content p                         {color: rgba(255, 255, 255, 0.8);font-size: 16px;line-height: 1.5;margin: 0;}
+.card-content p                         {color: rgba(255, 255, 255, 0.9);font-size: 15px;line-height: 1.4;margin: 0;text-align: center;letter-spacing: 0.3px;}
 /*  */
 @keyframes slide                        {
     from                                { top: -100%; left: -100%; }
@@ -355,8 +361,8 @@ html.lenis, html.lenis body             {height: auto;}
     .banner-section                     {padding: 0 15px;margin-top: 60px;}
     .banner-section a                   {margin: 20px auto 0;font-size: 14px;}
     .images-container                   {padding: 40px 15px;}
-    .card-content h3                    {font-size: 20px;}
-    .card-content p                     {font-size: 14px;}
+    .card-content h3                    {font-size: 18px;line-height: 1.1;letter-spacing: 0.3px;}
+    .card-content p                     {font-size: 13px;line-height: 1.3;}
     /* Loader adjustments for mobile */
     #loader                             {width: 200px;height: 200px;}    
     .loader-text                        {font-size: 1.5rem;}
@@ -370,8 +376,8 @@ html.lenis, html.lenis body             {height: auto;}
     h1                                  {font-size: 32px;line-height: 40px;}    
     .banner-section                     {padding: 0 10px;margin-top: 40px;}
     .images-container                   {padding: 30px 10px;}
-    .card-content h3                    {font-size: 18px;}
-    .card-content p                     {font-size: 13px;}
+    .card-content h3                    {font-size: 16px;line-height: 1.0;letter-spacing: 0.2px;}
+    .card-content p                     {font-size: 12px;line-height: 1.2;}
     #loader                             {width: 150px;height: 150px;}
     .loader-text                        {font-size: 1.2rem;}
 }
@@ -465,6 +471,7 @@ html.lenis, html.lenis body             {height: auto;}
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
+    font-family: 'PixelText', serif;
     transition: color 0.3s ease, font-size 0.4s ease;
     cursor: pointer;
 }
@@ -475,6 +482,7 @@ html.lenis, html.lenis body             {height: auto;}
 
 .dynamic-island.shrunk .menu-items a {
     font-size: 16px;
+    font-family: 'PixelText', serif;
 }
 
 .section {
@@ -521,4 +529,54 @@ html.lenis, html.lenis body             {height: auto;}
 html {
   scrollbar-width: thin;
   scrollbar-color: #ff4444 transparent;
+}
+
+/* Web SVG Overlay */
+.web-overlay {
+    position: fixed;
+    top: 20px;
+    right: 15px;
+    z-index: 1000;
+    pointer-events: none; /* Allows clicking through the overlay */
+}
+
+.web-svg-icon {
+    width: 60px;
+    height: 60px;
+    opacity: 0.65;
+    filter: brightness(0) invert(1); /* Makes the SVG white */
+    transition: opacity 0.3s ease;
+}
+
+/* Optional: Show overlay on hover */
+.web-overlay:hover .web-svg-icon {
+    opacity: 0.9;
+    pointer-events: auto;
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+    .web-overlay {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .web-svg-icon {
+        width: 45px;
+        height: 45px;
+        opacity: 0.1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .web-overlay {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .web-svg-icon {
+        width: 35px;
+        height: 35px;
+        opacity: 0.08;
+    }
 }
