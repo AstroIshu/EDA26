@@ -266,7 +266,7 @@ body                                    {font-family: "Golos Text"; background: 
 .nav-link-container a                   {font-size: 14px;text-transform: uppercase;transition: all ease-in-out 0.15s;}
 .nav-link-container a:hover             {color: #D6F844;}
 .toggle-btn                             {background: #515151;padding: 16px;}
-.banner-section                         {max-width: 1122px;margin: 100px auto 0;text-align: center;}
+.banner-section                         {max-width: 1122px;margin: 120px auto 0;text-align: center;}
 h1                                      {font-size: 100px;line-height: 140px;color: white;font-weight: 400;text-transform: uppercase;font-family: "New Rocker", system-ui;}
 p                                       {color: #949494;}
 /*  */
@@ -331,6 +331,7 @@ html.lenis, html.lenis body             {height: auto;}
     .header                             {padding: 20px 30px;}
     .nav-link-container                 {gap: 25px;padding-left: 20px;}
     h1                                  {font-size: 80px;line-height: 120px;}
+    .banner-section                     {margin-top: 140px;}
 }
  
 /* Mobile landscape and smaller tablets */
@@ -341,7 +342,7 @@ html.lenis, html.lenis body             {height: auto;}
     
     .nav-link-container a               {font-size: 12px;}
     h1                                  {font-size: 60px;line-height: 80px;}
-    .banner-section                     {padding: 0 20px;margin-top: 80px;}
+    .banner-section                     {padding: 0 20px;margin-top: 120px;}
     .images-container                   {padding: 40px 20px;}
     .img-main                           {max-width: 35vw;}
     .img-main.glass-card                {min-height: 180px;padding: 20px;}
@@ -358,7 +359,7 @@ html.lenis, html.lenis body             {height: auto;}
     .nav-link-container a               {font-size: 11px;}    
     .toggle-btn                         {padding: 12px;}
     h1                                  {    font-size: 48px;line-height: 50px;}
-    .banner-section                     {padding: 0 15px;margin-top: 60px;}
+    .banner-section                     {padding: 0 15px;margin-top: 100px;}
     .banner-section a                   {margin: 20px auto 0;font-size: 14px;}
     .images-container                   {padding: 40px 15px;}
     .card-content h3                    {font-size: 18px;line-height: 1.1;letter-spacing: 0.3px;}
@@ -374,7 +375,7 @@ html.lenis, html.lenis body             {height: auto;}
     .nav-link-container                 {gap: 10px;padding-left: 8px;padding-right: 8px;}
     .nav-link-container a               {font-size: 10px;}
     h1                                  {font-size: 32px;line-height: 40px;}    
-    .banner-section                     {padding: 0 10px;margin-top: 40px;}
+    .banner-section                     {padding: 0 10px;margin-top: 80px;}
     .images-container                   {padding: 30px 10px;}
     .card-content h3                    {font-size: 16px;line-height: 1.0;letter-spacing: 0.2px;}
     .card-content p                     {font-size: 12px;line-height: 1.2;}
@@ -386,7 +387,7 @@ html.lenis, html.lenis body             {height: auto;}
 @media screen and (max-height: 500px) and (orientation: landscape) {
     .header                             {padding: 10px 20px;}
     h1                                  {font-size: 50px;line-height: 60px;}
-    .banner-section                     {margin-top: 20px;}
+    .banner-section                     {margin-top: 60px;}
 }
 
 /* Dynamic Island */
@@ -537,7 +538,12 @@ html {
     top: 20px;
     right: 15px;
     z-index: 1000;
-    pointer-events: none; /* Allows clicking through the overlay */
+    pointer-events: auto; /* Allow clicking on the overlay */
+}
+
+.web-link {
+    display: inline-block;
+    text-decoration: none;
 }
 
 .web-svg-icon {
@@ -546,12 +552,24 @@ html {
     opacity: 0.65;
     filter: brightness(0) invert(1); /* Makes the SVG white */
     transition: opacity 0.3s ease;
+    animation: rotate360 4s linear infinite; /* Continuous 360-degree rotation */
+    cursor: pointer;
+}
+
+/* Keyframes for 360-degree rotation */
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Optional: Show overlay on hover */
-.web-overlay:hover .web-svg-icon {
+.web-overlay:hover .web-svg-icon,
+.web-link:hover .web-svg-icon {
     opacity: 0.9;
-    pointer-events: auto;
 }
 
 /* Responsive adjustments for mobile */

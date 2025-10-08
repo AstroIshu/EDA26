@@ -522,3 +522,34 @@ window.addEventListener("scroll", () => {
         ticking = true;
     }
 });
+
+// Handle Web SVG Click Event
+function handleWebClick(event) {
+    event.preventDefault(); // Prevent default link behavior
+    
+    // Add a visual feedback effect
+    const webIcon = event.target;
+    webIcon.style.transform = 'scale(1.2) rotate(180deg)';
+    webIcon.style.transition = 'transform 0.3s ease';
+    
+    setTimeout(() => {
+        webIcon.style.transform = 'scale(1)';
+    }, 300);
+    
+    // Placeholder action - you can replace this with actual navigation
+    console.log('🌐 Web icon clicked! Navigating to placeholder link...');
+    
+    // Example: Navigate to a specific page
+    // window.location.href = 'https://your-website.com';
+    
+    // Example: Open in new tab
+    // window.open('https://your-website.com', '_blank');
+    
+    // For now, show an alert as placeholder
+    setTimeout(() => {
+        alert('Web icon clicked! This is a placeholder. Replace with your desired link.');
+    }, 350);
+}
+
+// Make the function globally available
+window.handleWebClick = handleWebClick;

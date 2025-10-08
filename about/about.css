@@ -931,7 +931,12 @@ html {
     top: 20px;
     right: 15px;
     z-index: 1000;
-    pointer-events: none; /* Allows clicking through the overlay */
+    pointer-events: auto; /* Allow clicking on the overlay */
+}
+
+.web-link {
+    display: inline-block;
+    text-decoration: none;
 }
 
 .web-svg-icon {
@@ -940,12 +945,24 @@ html {
     opacity: 0.65;
     filter: brightness(0) invert(1); /* Makes the SVG white */
     transition: opacity 0.3s ease;
+    animation: rotate360 4s linear infinite; /* Continuous 360-degree rotation */
+    cursor: pointer;
+}
+
+/* Keyframes for 360-degree rotation */
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Optional: Show overlay on hover */
-.web-overlay:hover .web-svg-icon {
+.web-overlay:hover .web-svg-icon,
+.web-link:hover .web-svg-icon {
     opacity: 0.9;
-    pointer-events: auto;
 }
 
 /* Responsive adjustments for mobile */
