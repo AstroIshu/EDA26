@@ -1,4 +1,4 @@
-// Loader JavaScript - 3D Cloud Animation using Three.js
+// Experimental Loader JavaScript - 3D Cloud Animation using Three.js
 
 import * as THREE from "three";
 import * as BufferGeometryUtils from "addons/utils/BufferGeometryUtils.js";
@@ -113,8 +113,6 @@ tLoader.load(
 );
 
 function init(t) {
-    // Remove background canvas creation to prevent blue screen
-
     // Setup camera
     camera.position.z = 6000;
 
@@ -129,7 +127,7 @@ function init(t) {
     }
 
     // Setup fog
-    var fog = new THREE.Fog(0x4584b4, -100, 3000);
+    var fog = new THREE.Fog(0x8B4513, -100, 3000); // Brown/orange tone
     scene.fog = fog;
 
     // Create shader material
@@ -193,7 +191,7 @@ function init(t) {
     // Start animation
     animate();
     
-    console.log("🌥️ Cloud animation initialized!");
+    console.log("🌥️ Experimental cloud animation initialized!");
     
     // Start the sequence: clouds fade in after a delay
     startSequence();
@@ -253,103 +251,53 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-// Optional: Add loader completion callback
-export function onLoaderComplete(callback) {
-    // You can call this function when your main content is ready
-    setTimeout(() => {
-        // Fade out the loader
-        const container = document.querySelector('.container');
-        if (container) {
-            container.style.transition = 'opacity 1s ease-out';
-            container.style.opacity = '0';
-            
-            setTimeout(() => {
-                if (typeof callback === 'function') {
-                    callback();
-                }
-                // Optionally redirect to main page
-                // window.location.href = 'home/home.html';
-            }, 1000);
-        }
-    }, 3000); // Show loader for at least 3 seconds
-}
-
-// Optional: Progress tracking
-// export function updateLoadingProgress(progress) {
-//     const progressBar = document.querySelector('.loading-progress');
-//     if (progressBar) {
-//         const percentage = Math.min(100, Math.max(0, progress));
-//         progressBar.style.width = percentage + '%';
-//     }
-// }
-
-// Export the main functions for external use
-window.LoaderAPI = {
-    onLoaderComplete,
-    onLoaderCompleteWithText,
-    updateLoadingProgress,
-    showRevealText,
-    proceedToMainSite
-};
-
 // ========================================
-// NEW SEQUENCE FUNCTIONS
+// EXPERIMENTAL SEQUENCE FUNCTIONS
 // ========================================
 
 // Start the main sequence
 function startSequence() {
-    console.log('🎬 Starting Escape Da Vinci 2k26 sequence...');
+    console.log('🎬 Starting Experimental Escape Da Vinci 2k26 sequence...');
     
     // Initialize background music
     initAudio();
     
     // Step 1: Title is already visible (CSS animation)
-    console.log('📝 Title "Escape Da Vinci 2k26" displayed');
+    console.log('📝 3D Title "Escape Da Vinci 2k26" displayed');
     
-    // Step 2: Fade in clouds and rainbow overlay after 2 seconds
+    // Step 2: Fade in marquee border after 1 second
+    setTimeout(() => {
+        fadeInMarqueeBorder();
+    }, 1000);
+    
+    // Step 3: Fade in clouds after 2 seconds total
     setTimeout(() => {
         fadeInClouds();
-        showRainbowOverlay();
     }, 2000);
     
-    // Step 3: Show Enter button after 5 seconds total
+    // Step 4: Show Enter button after 5 seconds total
     setTimeout(() => {
         showEnterButton();
     }, 5000);
 }
 
-// Show rainbow overlay
-function showRainbowOverlay() {
-    const rainbowOverlay = document.getElementById('rainbowOverlay');
-    if (rainbowOverlay) {
-        rainbowOverlay.classList.add('show');
-        console.log('🌈 Rainbow overlay sliding in behind clouds...');
-    }
-}
-
-// Hide rainbow overlay
-function hideRainbowOverlay() {
-    const rainbowOverlay = document.getElementById('rainbowOverlay');
-    if (rainbowOverlay) {
-        rainbowOverlay.classList.remove('show');
-        console.log('🌈 Rainbow overlay fading out...');
+// Fade in the marquee border
+function fadeInMarqueeBorder() {
+    const marqueeBorder = document.querySelector('.marquee-border');
+    
+    if (marqueeBorder) {
+        marqueeBorder.classList.add('show');
+        console.log('🎠 Marquee border appearing around the page...');
     }
 }
 
 // Fade in the cloud animation
 function fadeInClouds() {
     const container = document.querySelector('.container');
-    const marqueeContainer = document.getElementById('marqueeContainer');
     
     if (container) {
         container.classList.add('show');
-        console.log('🌥️ Clouds fading in behind text...');
-    }
-    
-    // Show marquee at the same time as clouds
-    if (marqueeContainer) {
-        marqueeContainer.classList.add('show');
-        console.log('🎠 Marquee text rolling in...');
+        console.log('🌥️ Clouds fading in behind everything...');
     }
 }
 
@@ -368,16 +316,15 @@ function showEnterButton() {
 // Handle Enter button click
 function handleEnterClick(event) {
     // The page transition system will handle the fade and navigation automatically
-    // No need for manual fade out code anymore - just let the transition system work!
-    console.log('🚀 Sparkly Enter button clicked! Transition system taking over...');
+    console.log('🚀 Experimental Enter button clicked! Transition system taking over...');
 }
+
 // Export the main functions for external use
-window.LoaderAPI = {
+window.ExperimentalLoaderAPI = {
     startSequence,
+    fadeInMarqueeBorder,
     fadeInClouds,
     showEnterButton,
-    showRainbowOverlay,
-    hideRainbowOverlay,
     handleEnterClick
 };
 
@@ -387,8 +334,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Console messages
-console.log('%c🎬 Escape Da Vinci 2k26 Loader initialized!', 'color: #4584b4; font-size: 16px; font-weight: bold;');
-console.log('%c🎆 Sequence: Title → Clouds + Rainbow → Enter Button', 'color: white; font-size: 14px;');
+console.log('%c🧪 Experimental Escape Da Vinci 2k26 Loader initialized!', 'color: #ff4444; font-size: 16px; font-weight: bold;');
+console.log('%c🎆 Experimental Sequence: 3D Title → Marquee Border → Clouds → Enter Button', 'color: white; font-size: 14px;');
 console.log('%c🎵 Background music will start automatically (if allowed by browser)', 'color: #ff6b9d; font-size: 12px;');
 
 // Handle Web SVG Click Event
@@ -406,12 +353,6 @@ function handleWebClick(event) {
     
     // Placeholder action - you can replace this with actual navigation
     console.log('🌐 Web icon clicked! Navigating to placeholder link...');
-    
-    // Example: Navigate to a specific page
-    // window.location.href = 'https://your-website.com';
-    
-    // Example: Open in new tab
-    // window.open('https://your-website.com', '_blank');
     
     // For now, show an alert as placeholder
     setTimeout(() => {

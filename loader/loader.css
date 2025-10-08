@@ -1,4 +1,4 @@
-/* Escape Da Vinci 2k26 Loader Styles */
+/* Experimental Escape Da Vinci 2k26 Loader Styles */
 
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=New+Rocker&family=Unbounded:wght@200..900&display=swap');
@@ -24,6 +24,7 @@
     --font-ratio-max: 1.33;
     --font-width-min: 375;
     --font-width-max: 1500;
+    --border-thickness: 50px;
 }
 
 html,
@@ -82,6 +83,209 @@ body>* {
     grid-row: 1;
 }
 
+/* ========================================
+   MARQUEE BORDER SYSTEM
+======================================== */
+
+.marquee-border {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.marquee-border.show {
+    opacity: 1;
+}
+
+/* Common marquee border styling */
+.marquee-border > div {
+    position: absolute;
+    background: color-mix(in hsl, white, transparent 86%);
+    border: 1px solid #ff4444;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+/* Top Border */
+.marquee-border-top {
+    top: 0;
+    left: var(--border-thickness);
+    width: calc(100% - 2 * var(--border-thickness));
+    height: var(--border-thickness);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Right Border */
+.marquee-border-right {
+    top: var(--border-thickness);
+    right: 0;
+    width: var(--border-thickness);
+    height: calc(100% - 2 * var(--border-thickness));
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Bottom Border */
+.marquee-border-bottom {
+    bottom: 0;
+    left: var(--border-thickness);
+    width: calc(100% - 2 * var(--border-thickness));
+    height: var(--border-thickness);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Left Border */
+.marquee-border-left {
+    top: var(--border-thickness);
+    left: 0;
+    width: var(--border-thickness);
+    height: calc(100% - 2 * var(--border-thickness));
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Marquee Text Container
+.marquee-text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+}
+
+.marquee-text.vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    width: 100%;
+    height: auto;
+    animation: marqueeScrollVertical 30s linear infinite;
+}
+
+.marquee-text.reverse {
+    animation-direction: reverse;
+}
+
+.marquee-text span {
+    font-family: "GT Standard", "Arial", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 500;
+    background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.9), #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 6px rgba(238, 132, 132, 0.86);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-right: 50px; 
+    display: inline-block;
+    min-width: 100vw; 
+}
+
+.marquee-text.vertical span {
+    min-width: auto;
+    min-height: 100vh;
+    padding-right: 0;
+    padding-bottom: 50px;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes marqueeScrollVertical {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+} */
+
+/* Marquee Text Container */
+.marquee-text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: marqueeScroll 20s linear infinite;
+    will-change: transform;
+}
+
+/* Vertical marquee text (for left and right borders) */
+.marquee-text.vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    width: 100%;
+    height: auto;
+    animation: marqueeScrollVertical 25s linear infinite;
+}
+
+/* Reverse direction marquee */
+.marquee-text.reverse {
+    animation-direction: reverse;
+}
+
+.marquee-text span {
+    font-family: "GT Standard", "Arial", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 500;
+    color: white;
+    text-shadow: 
+        0 0 3px #8B0000,
+        0 0 6px #A52A2A,
+        0 0 9px #DC143C,
+        1px 1px 2px #8B0000,
+        -1px -1px 2px #8B0000,
+        1px -1px 2px #8B0000,
+        -1px 1px 2px #8B0000;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-right: 80px; /* Add spacing for infinite loop effect */
+    display: inline-block;
+}
+
+/* For vertical text, adjust the spacing */
+.marquee-text.vertical span {
+    padding-right: 0;
+    padding-bottom: 80px;
+}
+
+@keyframes marqueeScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes marqueeScrollVertical {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+/* Pause marquee on hover */
+.marquee-border:hover .marquee-text {
+    animation-play-state: paused;
+}
+
+/* ========================================
+   CLOUD CONTAINER
+======================================== */
+
 /* Cloud Container - starts hidden */
 .container {
     position: absolute;
@@ -100,6 +304,10 @@ body>* {
     opacity: 1;
 }
 
+/* ========================================
+   MAIN CONTENT
+======================================== */
+
 /* Main Content - always visible */
 .main-content {
     display: flex;
@@ -112,6 +320,8 @@ body>* {
     gap: 3rem;
     padding: 0 2rem;
     box-sizing: border-box;
+    /* Add padding to account for border */
+    padding: var(--border-thickness) var(--border-thickness);
 }
 
 /* Title Container with Grid Layout */
@@ -129,67 +339,6 @@ body>* {
     grid-row: 1;
 }
 
-/* Marquee Text Styling (project-aligned, inspired) */
-.marquee-container {
-    width: 100%;
-    max-width: 800px;
-    height: 50px;
-    overflow: hidden;
-    background: color-mix(in hsl, white, transparent 86%);
-    border-radius: 0.25em;
-    border: 1px solid #ff4444;
-    backdrop-filter: blur(10px);
-    position: relative;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.8s ease;
-    margin: 0 auto 2rem auto;
-    /* Subtle fading edges */
-    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 7%, rgba(0,0,0,1) 93%, transparent 100%);
-}
-
-.marquee-container.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.marquee-text {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    animation: marqueeScroll 30s linear infinite;
-    will-change: transform;
-}
-
-.marquee-text span {
-    font-family: "GT Standard", "Arial", sans-serif;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    font-weight: 500;
-    color: transparent; /* gradient text */
-    background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.9), #ffffff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    text-shadow: 0 0 6px #ee8484cd 86%;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding-left: 0;
-    display: inline-block;
-}
-
-@keyframes marqueeScroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-/* Pause marquee on hover */
-.marquee-container:hover .marquee-text {
-    animation-play-state: paused;
-}
 /* Gradient Background for Text */
 .title-gradient {
     mix-blend-mode: multiply;
@@ -205,7 +354,11 @@ body>* {
     }
 }
 
-/* Title Styling */
+/* ========================================
+   3D TITLE STYLING
+======================================== */
+
+/* Enhanced 3D Title Styling */
 .title {
     font-family: "New Rocker", system-ui;
     font-weight: 400;
@@ -221,12 +374,37 @@ body>* {
     animation: titleAppear 1.5s ease-out;
     z-index: 2;
     position: relative;
+    
+    /* Enhanced 3D Text Shadow Effect - Similar to Enter Button */
     text-shadow: 
+        /* Primary shadow layers for depth */
         0 0 2px #ff4444,
         0 0 4px #ff2222,
         0 0 6px #ff0000,
-        0 0 8px rgba(255, 68, 68, 0.5);
+        0 0 8px rgba(255, 68, 68, 0.5),
+        
+        /* 3D depth shadows */
+        1px 1px 0 var(--shadow),
+        2px 2px 0 var(--shadow),
+        3px 3px 0 var(--shadow),
+        4px 4px 0 var(--shadow),
+        5px 5px 0 var(--shadow),
+        6px 6px 0 var(--shadow),
+        7px 7px 0 var(--shadow),
+        8px 8px 0 var(--shadow),
+        
+        /* Outer glow for dramatic effect */
+        0 0 15px rgba(255, 68, 68, 0.3),
+        0 0 25px rgba(255, 34, 34, 0.2),
+        0 0 35px rgba(255, 0, 0, 0.1);
+    
+    /* Transform for slight 3D perspective */
+    transform: perspective(1000px) rotateX(5deg);
 }
+
+/* ========================================
+   SPARKLY ENTER BUTTON
+======================================== */
 
 /* Sparkly Enter Button */
 .dazzle {
@@ -256,7 +434,7 @@ body>* {
 }
 
 .dazzle:is(:hover, :focus-visible) {
-    background: color-mix(in hsl, white, #ee8484cd 86%);
+    background: color-mix(in hsl, white, rgba(238, 132, 132, 0.86));
 }
 
 .dazzle span {
@@ -404,30 +582,31 @@ canvas {
 @keyframes titleAppear {
     0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: perspective(1000px) rotateX(5deg) translateY(-20px);
     }
 
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: perspective(1000px) rotateX(5deg) translateY(0);
     }
 }
 
-/* Responsive Design */
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
 @media screen and (max-width: 768px) {
+    :root {
+        --border-thickness: 40px;
+    }
+    
     .title {
         font-size: clamp(3rem, 10vw, 8rem);
     }
 
     .main-content {
         gap: 2.5rem;
-        padding: 0 1.5rem;
-    }
-
-    .marquee-container {
-        max-width: 90%;
-        height: 45px;
-        margin: 0 auto 1.5rem auto;
+        padding: var(--border-thickness) calc(var(--border-thickness) * 0.8);
     }
 
     .marquee-text span {
@@ -441,19 +620,17 @@ canvas {
 }
 
 @media screen and (max-width: 480px) {
+    :root {
+        --border-thickness: 30px;
+    }
+    
     .title {
         font-size: clamp(2.5rem, 8vw, 6rem);
     }
 
     .main-content {
         gap: 2rem;
-        padding: 0 1rem;
-    }
-
-    .marquee-container {
-        max-width: 95%;
-        height: 40px;
-        margin: 0 auto 1rem auto;
+        padding: var(--border-thickness) calc(var(--border-thickness) * 0.6);
     }
 
     .marquee-text span {
@@ -480,8 +657,8 @@ html {
 /* Web SVG Overlay */
 .web-overlay {
     position: fixed;
-    top: 20px;
-    right: 15px;
+    top: calc(var(--border-thickness) + 20px);
+    right: calc(var(--border-thickness) + 15px);
     z-index: 1000;
     pointer-events: auto; /* Allow clicking on the overlay */
 }
@@ -520,8 +697,8 @@ html {
 /* Responsive adjustments for mobile */
 @media screen and (max-width: 768px) {
     .web-overlay {
-        top: 15px;
-        right: 15px;
+        top: calc(var(--border-thickness) + 15px);
+        right: calc(var(--border-thickness) + 15px);
     }
     
     .web-svg-icon {
@@ -533,8 +710,8 @@ html {
 
 @media screen and (max-width: 480px) {
     .web-overlay {
-        top: 10px;
-        right: 10px;
+        top: calc(var(--border-thickness) + 10px);
+        right: calc(var(--border-thickness) + 10px);
     }
     
     .web-svg-icon {

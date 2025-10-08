@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Loading animation with 3D clouds">
-    <title>EDV 26: Loading</title>
+    <meta name="description" content="Experimental loader with border marquee and 3D title">
+    <title>EDV 26.</title>
     
-    <!-- Loader CSS -->
+    <!-- Experimental Loader CSS -->
     <link rel="stylesheet" href="loader/loader.css">
     
     <!-- Page Transition Styles -->
@@ -30,9 +30,6 @@
         }
     </style>
     
-    <!-- Universal Page Transition System -->
-    <!-- <link rel="stylesheet" href="transitions/page-transition.css"> -->
-    
     <!-- ES Module Shims for Three.js -->
     <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
     
@@ -51,18 +48,42 @@
     <!-- Page Transition Overlay -->
     <div class="page-transition-overlay" id="pageTransitionOverlay"></div>
     
+    <!-- Marquee Border Container -->
+    <div class="marquee-border">
+        <!-- Top Border -->
+        <div class="marquee-border-top">
+            <div class="marquee-text">
+                <span>Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • </span>
+            </div>
+        </div>
+        
+        <!-- Right Border -->
+        <div class="marquee-border-right">
+            <div class="marquee-text vertical">
+                <span>Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • </span>
+            </div>
+        </div>
+        
+        <!-- Bottom Border -->
+        <div class="marquee-border-bottom">
+            <div class="marquee-text reverse">
+                <span>Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • </span>
+            </div>
+        </div>
+        
+        <!-- Left Border -->
+        <div class="marquee-border-left">
+            <div class="marquee-text vertical reverse">
+                <span>Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • </span>
+            </div>
+        </div>
+    </div>
+    
     <!-- Loader Container (starts hidden) -->
     <div class="container" id="container"></div>
     
     <!-- Main Title Text (always visible) -->
     <div class="main-content" id="mainContent">
-        <!-- Marquee Text -->
-        <div class="marquee-container" id="marqueeContainer">
-            <div class="marquee-text">
-                <span>Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • Ready for the thrill! Enjoy the Experience! • </span>
-            </div>
-        </div>
-        
         <div class="title-container">
             <aside class="title-gradient"></aside>
             <h1 class="title">Escape Da Vinci <br> 2k26</h1>
@@ -70,7 +91,7 @@
         
         <!-- Sparkly Enter Button -->
         <a class="dazzle fluid" href="#" 
-           data-transition-url="home/home.html"
+           data-transition-url="../home/home.html"
            data-transition-type="fade"
            data-transition-duration="1000"
            id="enterButton"
@@ -96,23 +117,19 @@
             <span class="fluid" aria-hidden="true">ENTER</span>
         </a>
     </div>
-    </div>
      
      <!-- Web SVG Overlay -->
      <div class="web-overlay">
          <a href="#" class="web-link" onclick="handleWebClick(event)">
-             <img src="assets/web.svg" alt="Web overlay" class="web-svg-icon">
+             <img src="../assets/web.svg" alt="Web overlay" class="web-svg-icon">
          </a>
      </div>
      
      <!-- Background Music -->
         <audio id="background-music" loop autoplay>
-            <source src="audio/bg.mp3" type="audio/mpeg">
+            <source src="../audio/bg.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
-    
-    <!-- Universal Page Transition System -->
-    <!-- <script src="transitions/page-transition.js"></script> -->
     
     <!-- Page Transition Script -->
     <script>
@@ -138,7 +155,7 @@
         }
     </script>
     
-    <!-- Loader JavaScript -->
+    <!-- Experimental Loader JavaScript -->
     <script type="module" src="loader/loader.js"></script>
 </body>
 </html>
