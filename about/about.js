@@ -537,18 +537,7 @@ function handleWebClick(event) {
     }, 300);
     
     // Placeholder action - you can replace this with actual navigation
-    console.log('🌐 Web icon clicked! Navigating to placeholder link...');
-    
-    // Example: Navigate to a specific page
-    // window.location.href = 'https://your-website.com';
-    
-    // Example: Open in new tab
-    // window.open('https://your-website.com', '_blank');
-    
-    // For now, show an alert as placeholder
-    setTimeout(() => {
-        alert('Web icon clicked! This is a placeholder. Replace with your desired link.');
-    }, 350);
+    console.log('🌐 Web icon clicked!');
 }
 
 // Make the function globally available
