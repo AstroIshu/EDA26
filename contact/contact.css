@@ -229,7 +229,7 @@ body {
     left: 51%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.2);
-    border: 1px dashed #ff4444;
+    border: 1px dashed c;
     border-radius: 38px;
     padding: 10px 30px;
     display: flex;

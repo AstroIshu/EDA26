@@ -63,7 +63,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       // Success confirmation
       form.innerHTML = `
         <div class="confirmation" style="text-align: center; padding: 20px;">
-          <h3 style="color: #84b067; font-family: 'Special Elite', monospace; font-size: 1.5rem;">🚀 Message Sent!</h3>
+          <h3 style="color: #ff4444; font-family: 'Special Elite', monospace; font-size: 1.5rem;">🚀 Message Sent!</h3>
           <p>Your hackathon inquiry has been received!</p>
           <p>We'll get back to you within 24 hours.</p>
         </div>

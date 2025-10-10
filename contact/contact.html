@@ -49,10 +49,10 @@
                     Stuck in a puzzle? Need a clue to proceed? Reach out to our organizers. Reach out for any logistical, technical, or rule-related inquiries. We're here to ensure your Escape Da Vinci journey is smooth, thrilling, and unforgettable. Don't let a question hold you back from the adventure- connect with us and crack the code to success together
                 </p>
                 <div class="buttons">
-                    <a href="mailto:hackathon@eda26.com" class="email" title="Email Us"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-                    <a href="https://discord.com/invite/hackathon" class="discord" title="Join our Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
-                    <a href="https://www.linkedin.com/company/eda26" class="in" title="Follow on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                    <a href="https://github.com/EDA26" class="git" title="GitHub Repository"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    <a href="mailto:anshcu8654@gmail.com" class="email" title="Email Us"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/company/tamboo-baba/" class="in" title="Follow on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://unstop.com/hackathons/escape-da-vinci-chandigarh-university-cu-ajitgarh-punjab-1567073" class="unstop" title="Register on Unstop"><i class="fas fa-trophy" aria-hidden="true"></i></a>
+                    <a href="https://chat.whatsapp.com/Dc4EPMI70gUJwgQxrIa3aE" class="whatsapp" title="Join WhatsApp Group"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                 </div>
 
                 <!-- Sponsors Section -->
@@ -129,48 +129,52 @@
     <h2>Get In Touch With Us</h2>
     <p>Ready to participate or have questions? Drop us a message and we'll get back to you!</p>
     <form 
-        id="contact-form" 
-        action="https://formsubmit.co/astroishu06@gmail.com" 
-        method="POST"
-    >
+    id="contact-form" 
+    action="https://formsubmit.co/anshcu8654@gmail.com" 
+    method="POST"
+>
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required>
+    
+    <label for="organization">Organization/University</label>
+    <input type="text" id="organization" name="organization">
+    
+    <label for="inquiry-type">Inquiry Type</label>
+    <select id="inquiry-type" name="inquiry-type" required>
+        <option value="">Select an option</option>
+        <option value="participation">Participation</option>
+        <option value="sponsorship">Sponsorship</option>
+        <option value="mentorship">Mentorship</option>
+        <option value="team-member-change">Team Member Change Policy</option>
+        <option value="confirmation-fee-refund">Confirmation Fee & Refund Details</option>
+        <option value="travel-accommodation">Travel & Accommodation Support</option>
+        <option value="project-continuity">Project Continuity Between Rounds</option>
+        <option value="hardware-provision">Hardware Provision for Robotics Track</option>
+        <option value="offline-venue-logistics">Offline Venue & "Locked In" Logistics</option>
+        <option value="judging-criteria">Detailed Judging Criteria</option>
+        <option value="internet-facilities">Internet & Technical Facilities</option>
+        <option value="mentor-availability">Mentor Availability During Offline Rounds</option>
+        <option value="code-of-conduct">Code of Conduct & Reporting Procedure</option>
+        <option value="general">General Question</option>
+    </select>
+    
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required placeholder="Tell us about your queries..."></textarea>
+    
+    <!-- Hidden fields moved here -->
     <input type="hidden" name="_subject" value="New Hackathon Inquiry!">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="basic">
+    
+    <button type="submit">Send Message</button>
+</form>
 
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required>
-        
-        <label for="organization">Organization/University</label>
-        <input type="text" id="organization" name="organization">
-        
-        <label for="inquiry-type">Inquiry Type</label>
-        <select id="inquiry-type" name="inquiry-type" required>
-            <option value="">Select an option</option>
-            <option value="participation">Participation</option>
-            <option value="sponsorship">Sponsorship</option>
-            <option value="mentorship">Mentorship</option>
-            <option value="team-member-change">Team Member Change Policy</option>
-            <option value="confirmation-fee-refund">Confirmation Fee & Refund Details</option>
-            <option value="travel-accommodation">Travel & Accommodation Support</option>
-            <option value="project-continuity">Project Continuity Between Rounds</option>
-            <option value="hardware-provision">Hardware Provision for Robotics Track</option>
-            <option value="offline-venue-logistics">Offline Venue & "Locked In" Logistics</option>
-            <option value="judging-criteria">Detailed Judging Criteria</option>
-            <option value="internet-facilities">Internet & Technical Facilities</option>
-            <option value="mentor-availability">Mentor Availability During Offline Rounds</option>
-            <option value="code-of-conduct">Code of Conduct & Reporting Procedure</option>
-            <option value="general">General Question</option>
-        </select>
-        
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required placeholder="Tell us about your queries..."></textarea>
-        
-        <button type="submit">Send Message</button>
-    </form>
 </div>
                     <div class="right-section">
                         <div class="team-section">
@@ -178,21 +182,46 @@
                             <div class="team-members">
                                 <div class="team-member">
                                     <div class="member-image">
-                                        <img src="https://via.placeholder.com/150x150/84b067/ffffff?text=Event+Head" alt="Event Head">
+                                        <img src="../assets/nitesh.jpg" alt="Nitesh. K. Aggarwal - Founder" onerror="this.src='https://via.placeholder.com/150x150/ff6b6b/ffffff?text=Founder'">
                                     </div>
                                     <div class="member-info">
-                                        <h3>Event Head</h3>
-                                        <p>Leading the hackathon with passion and innovation</p>
+                                        <h3>Nitesh. K. Aggarwal - Founder</h3>
+                                        <p>Visionary founder driving innovation and excellence</p>
                                         <div class="member-contact">
-                                            <a href="mailto:eventhead@eda26.com"><i class="fas fa-envelope"></i></a>
-                                            <a href="https://linkedin.com/in/eventhead"><i class="fab fa-linkedin"></i></a>
+                                            <a href="https://www.linkedin.com/in/nitesh-k-aggarwal/"><i class="fab fa-linkedin"></i></a>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="team-member">
                                     <div class="member-image">
-                                        <img src="../assets/ishu128128.jpg" alt="Head Developer" onerror="this.src='https://via.placeholder.com/150x150/4ecdc4/ffffff?text=Head+Developer'">
+                                        <img src="../assets/sean.jpg" alt="Sean Louis - Visionary Supporter" onerror="this.src='https://via.placeholder.com/150x150/6c5ce7/ffffff?text=Visionary+Supporter'">
+                                    </div>
+                                    <div class="member-info">
+                                        <h3>Sean Louis - Visionary Supporter</h3>
+                                        <p>Providing strategic guidance and support for the future</p>
+                                        <div class="member-contact">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="team-member">
+                                    <div class="member-image">
+                                        <img src="../assets/ansh.jpg" alt="Ansh Malhotra - Event Head" onerror="this.src='https://via.placeholder.com/150x150/84b067/ffffff?text=Event+Head'">
+                                    </div>
+                                    <div class="member-info">
+                                        <h3>Ansh Malhotra - Event Head</h3>
+                                        <p>Leading the hackathon with passion and innovation</p>
+                                        <div class="member-contact">
+                                            <a href="mailto:anshcu8654@gmail.com"><i class="fas fa-envelope"></i></a>
+                                            <a href="https://www.linkedin.com/in/ansh-malhotra-748700293/"><i class="fab fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="team-member">
+                                    <div class="member-image">
+                                        <img src="../assets/ishu128128.jpg" alt="AstroIshu - Head Developer" onerror="this.src='https://via.placeholder.com/150x150/4ecdc4/ffffff?text=Head+Developer'">
                                     </div>
                                     <div class="member-info">
                                         <h3>AstroIshu - Head Developer</h3>
@@ -200,7 +229,7 @@
                                         <div class="member-contact">
                                             <a href="mailto:astroishu06@gmail.com"><i class="fas fa-envelope"></i></a>
                                             <a href="https://github.com/AstroIshu"><i class="fab fa-github"></i></a>
-                                            <a href="https://linkedin.com/in/singhishant"><i class="fab fa-linkedin"></i></a>
+                                            <a href="https://www.linkedin.com/in/singhishant/"><i class="fab fa-linkedin"></i></a>
                                         </div>
                                     </div>
                                 </div>
