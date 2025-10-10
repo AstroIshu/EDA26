@@ -266,9 +266,9 @@ body                                    {font-family: "Golos Text"; background: 
 .nav-link-container a                   {font-size: 14px;text-transform: uppercase;transition: all ease-in-out 0.15s;}
 .nav-link-container a:hover             {color: #D6F844;}
 .toggle-btn                             {background: #515151;padding: 16px;}
-.banner-section                         {max-width: 1122px;margin: 120px auto 0;text-align: center;}
+.banner-section                         {max-width: 1122px;margin: 120px auto 0;text-align: center;padding-bottom: 80px;}
 h1                                      {font-size: 100px;line-height: 140px;color: white;font-weight: 400;text-transform: uppercase;font-family: "New Rocker", system-ui;}
-p                                       {color: #949494;}
+p                                       {color: #949494;margin-bottom: 20px;}
 /*  */
 .banner-section a                       {display: flex;align-items: center;gap: 4px;color: #D6F844;position: relative;max-width: fit-content;margin: 30px auto 0;font-weight: 500;text-transform: uppercase;}
 .banner-section a img                   {width: 18px;aspect-ratio: 1;transition: all ease-in-out 0.15s;transform-origin: center;}
@@ -572,6 +572,200 @@ html {
     opacity: 0.9;
 }
 
+/* ========================================
+   SPARKLY REGISTER BUTTON (SAME AS ENTER BUTTON)
+======================================== */
+
+/* CSS Custom Properties for Button */
+:root {
+    --color: #C9C8C7;
+    --shadow: #66615E;
+    --glare: #949392;
+    --transition: 0.2s;
+    --font-size-min: 16;
+    --font-size-max: 20;
+    --font-ratio-min: 1.2;
+    --font-ratio-max: 1.33;
+    --font-width-min: 375;
+    --font-width-max: 1500;
+}
+
+/* GT Standard Font */
+@font-face {
+    font-family: "GT Standard";
+    src: url("https://assets.codepen.io/7558/GT-Standard-VF-Trial.woff2") format("woff2-variations");
+    font-weight: 300 900;
+    font-stretch: 0% 150%;
+    font-style: normal;
+}
+
+/* Sparkly Register Button - Top Left Position */
+.dazzle {
+    --font-level: 2;
+    --font-size: 0.75em;
+    --padding: 0.1em;
+    padding: var(--padding) calc(var(--padding) * 1.8);
+    border-radius: 0.2em;
+    text-decoration: none;
+    color: transparent;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    transition: background 0.2s 0.1s, transform 0.3s ease;
+    font-weight: 700;
+    opacity: 0.9;
+    transform: translateY(0);
+    font-family: "GT Standard", "Arial", sans-serif;
+    border: 1px solid rgba(255, 68, 68, 0.8);
+    margin: 0;
+    display: block;
+    width: fit-content;
+    z-index: 1001;
+    clear: both;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.1);
+}
+
+.dazzle:is(:hover, :focus-visible) {
+    background: rgba(255, 68, 68, 0.15);
+    border-color: #ff4444;
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.2);
+}
+
+.dazzle span {
+    display: inline-block;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-shadow: calc(var(--hover) * (var(--font-size) * -0)) calc(var(--hover) * (var(--font-size) * 0)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.02)) calc(var(--hover) * (var(--font-size) * 0.02)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.04)) calc(var(--hover) * (var(--font-size) * 0.04)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.06)) calc(var(--hover) * (var(--font-size) * 0.06)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.08)) calc(var(--hover) * (var(--font-size) * 0.08)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.1)) calc(var(--hover) * (var(--font-size) * 0.1)) var(--shadow);
+    transform: translate(calc(var(--hover) * (var(--font-size) * 0.1)),
+            calc(var(--hover) * (var(--font-size) * -0.1)));
+}
+
+.dazzle span:last-of-type {
+    position: absolute;
+    inset: var(--padding) calc(var(--padding) * 2);
+    background: linear-gradient(108deg,
+            transparent 0 55%,
+            var(--glare) 55% 60%,
+            transparent 60% 70%,
+            var(--glare) 70% 85%,
+            transparent 85%) calc(var(--pos) * -200%) 0% / 200% 100%,
+        var(--color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 2;
+    text-shadow: none;
+    transform: translate(calc(var(--hover) * (var(--font-size) * 0.1)),
+            calc(var(--hover) * (var(--font-size) * -0.1)));
+    transition: transform 0.2s, background-position 0s;
+}
+
+.dazzle:is(:hover, :focus-visible) span:last-of-type {
+    transition: transform 0.2s,
+        background-position calc(var(--hover) * 1.5s) calc(var(--hover) * 0.25s);
+}
+
+.dazzle {
+    --hover: 0.4;
+    --pos: 0;
+}
+
+.dazzle:is(:hover, :focus-visible) {
+    --hover: 1;
+    --pos: 1;
+}
+
+.dazzle:active {
+    --hover: 0;
+}
+
+.dazzle:active span:last-of-type {
+    --hover: 0;
+    --pos: 1;
+}
+
+.dazzle svg {
+    position: absolute;
+    z-index: 3;
+    width: calc(var(--font-size) * 0.4);
+    aspect-ratio: 1;
+    --delay-step: 0.15;
+    top: calc(var(--y, 50) * 1%);
+    left: calc(var(--x, 0) * 1%);
+    transform: translate(-50%, -50%) scale(0);
+    stroke-width: 1;
+    opacity: 0.8;
+}
+
+.dazzle svg path {
+    fill: var(--glare);
+}
+
+.dazzle:is(:hover, :focus-visible) svg {
+    animation: sparkleAnim 0.75s calc(0.1s + ((var(--delay-step) * var(--d)) * 1s)) both;
+}
+
+@keyframes sparkleAnim {
+    50% {
+        transform: translate(-50%, -50%) scale(var(--s, 1));
+    }
+}
+
+.dazzle svg:nth-of-type(1) {
+    --x: 0;
+    --y: 20;
+    --s: 1.1;
+    --d: 1;
+}
+
+.dazzle svg:nth-of-type(2) {
+    --x: 15;
+    --y: 80;
+    --s: 1.25;
+    --d: 2;
+}
+
+.dazzle svg:nth-of-type(3) {
+    --x: 45;
+    --y: 40;
+    --s: 1.1;
+    --d: 3;
+}
+
+.dazzle svg:nth-of-type(4) {
+    --x: 75;
+    --y: 60;
+    --s: 0.9;
+    --d: 2;
+}
+
+.dazzle svg:nth-of-type(5) {
+    --x: 100;
+    --y: 30;
+    --s: 0.8;
+    --d: 4;
+}
+
+/* Fluid Typography Utility */
+:where(.fluid) {
+    --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
+    --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
+    --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
+    --fluid-type: clamp((var(--fluid-min) / 16) * 1rem,
+            ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * 100vi),
+            (var(--fluid-max) / 16) * 1rem);
+    font-size: var(--fluid-type);
+}
+
 /* Responsive adjustments for mobile */
 @media screen and (max-width: 768px) {
     .web-overlay {
@@ -583,6 +777,14 @@ html {
         width: 45px;
         height: 45px;
         opacity: 0.1;
+    }
+    
+    .dazzle {
+        --font-size: 0.65em;
+        --padding: 0.08em;
+        top: 20px;
+        left: 20px;
+        opacity: 0.85;
     }
 }
 
@@ -596,5 +798,14 @@ html {
         width: 35px;
         height: 35px;
         opacity: 0.08;
+    }
+    
+    .dazzle {
+        --font-size: 0.55em;
+        --padding: 0.06em;
+        top: 15px;
+        left: 15px;
+        opacity: 0.8;
+        border-width: 0.8px;
     }
 }

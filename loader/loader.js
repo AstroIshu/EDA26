@@ -351,12 +351,12 @@ function handleWebClick(event) {
         webIcon.style.transform = 'scale(1)';
     }, 300);
     
-    // Placeholder action - you can replace this with actual navigation
-    console.log('🌐 Web icon clicked! Navigating to placeholder link...');
+    // Navigate to Unstop hackathon page
+    console.log('🌐 Web icon clicked! Navigating to Unstop hackathon...');
     
-    // For now, show an alert as placeholder
+    // Open Unstop hackathon page in new tab
     setTimeout(() => {
-        alert('Web icon clicked! This is a placeholder. Replace with your desired link.');
+        window.open('https://unstop.com/hackathons/escape-da-vinci-chandigarh-university-cu-ajitgarh-punjab-1567073', '_blank');
     }, 350);
 }
 
